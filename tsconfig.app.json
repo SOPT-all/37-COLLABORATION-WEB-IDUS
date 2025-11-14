@@ -21,9 +21,10 @@
     "paths": {
       "@/*": ["./src/*"],
       "@shared/*": ["./src/shared/*"],
-      "@assets/*": ["./src/assets/*"],
       "@pages/*": ["./src/pages/*"],
-      "@routes/*": ["./src/routes/*"]
+      "@routes/*": ["./src/routes/*"],
+      "@img/*": ["./src/assets/img/*"],
+      "@svg/*": ["./src/assets/svg/*"]
     },
 
     /* Linting */

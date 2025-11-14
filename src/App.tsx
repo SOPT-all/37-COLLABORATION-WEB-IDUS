@@ -1,9 +1,7 @@
+import Home from "@pages/home/home";
+
 function App() {
-  return (
-    <div>
-      37-collaboration-web-idus
-    </div>
-  )
+  return <Home />;
 }
 
-export default App
+export default App;
