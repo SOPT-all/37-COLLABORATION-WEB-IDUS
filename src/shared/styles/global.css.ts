@@ -3,7 +3,7 @@ import "./layer.css";
 import "./reset.css";
 import "../styles/typography.css";
 
-globalStyle("body", {
+globalStyle("html, body", {
   fontFamily: "Pretendard",
   letterSpacing: "-2.5%",
 });

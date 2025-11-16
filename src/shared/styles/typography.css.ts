@@ -1,78 +1,84 @@
-import { globalStyle } from "@vanilla-extract/css";
+import { recipe } from "@vanilla-extract/recipes";
 import { fontSize, fontWeight } from "./tokens/font.css";
 
 export const typography = {
-  display: {
-    size: fontSize["4xl"],
-    weight: fontWeight.semiBold,
-    lineHeight: "140%",
-  },
-  heading1: {
-    size: fontSize["2xl"],
-    weight: fontWeight.semiBold,
-    lineHeight: "140%",
-  },
-  heading2: {
-    size: fontSize.xl,
-    weight: fontWeight.semiBold,
-    lineHeight: "140%",
-  },
-  heading3: {
-    size: fontSize.lg,
-    weight: fontWeight.semiBold,
-    lineHeight: "140%",
-  },
-  body1: {
-    size: fontSize.base,
-    weight: fontWeight.semiBold,
-    lineHeight: "140%",
-  },
-  body2: {
-    size: fontSize.base,
-    weight: fontWeight.medium,
-    lineHeight: "140%",
-  },
-  body3: {
-    size: fontSize.sm,
-    weight: fontWeight.medium,
-    lineHeight: "140%",
-  },
-  body4: {
-    size: fontSize.sm,
-    weight: fontWeight.regular,
-    lineHeight: "160%",
-  },
-  caption1: {
-    size: fontSize.xs,
-    weight: fontWeight.medium,
-    lineHeight: "140%",
-  },
-  caption2: {
-    size: fontSize.xs,
-    weight: fontWeight.regular,
-    lineHeight: "140%",
-  },
-};
+  display: recipe({
+    base: {
+      fontSize: fontSize["4xl"],
+      fontWeight: fontWeight.semiBold,
+      lineHeight: "140%",
+    },
+  }),
 
-const classes: Record<keyof typeof typography, string> = {
-  display: ".display",
-  heading1: ".heading1",
-  heading2: ".heading2",
-  heading3: ".heading3",
-  body1: ".body1",
-  body2: ".body2",
-  body3: ".body3",
-  body4: ".body4",
-  caption1: ".caption1",
-  caption2: ".caption2",
-};
+  heading1: recipe({
+    base: {
+      fontSize: fontSize["2xl"],
+      fontWeight: fontWeight.semiBold,
+      lineHeight: "140%",
+    },
+  }),
 
-Object.entries(typography).forEach(([key, value]) => {
-  const k = key as keyof typeof typography;
+  heading2: recipe({
+    base: {
+      fontSize: fontSize.xl,
+      fontWeight: fontWeight.semiBold,
+      lineHeight: "140%",
+    },
+  }),
 
-  globalStyle(classes[k], {
-    fontSize: value.size,
-    fontWeight: value.weight,
-    lineHeight: value.lineHeight,
-  });
-});
+  heading3: recipe({
+    base: {
+      fontSize: fontSize.lg,
+      fontWeight: fontWeight.semiBold,
+      lineHeight: "140%",
+    },
+  }),
+
+  body1: recipe({
+    base: {
+      fontSize: fontSize.base,
+      fontWeight: fontWeight.semiBold,
+      lineHeight: "140%",
+    },
+  }),
+
+  body2: recipe({
+    base: {
+      fontSize: fontSize.base,
+      fontWeight: fontWeight.medium,
+      lineHeight: "140%",
+    },
+  }),
+
+  body3: recipe({
+    base: {
+      fontSize: fontSize.sm,
+      fontWeight: fontWeight.medium,
+      lineHeight: "140%",
+    },
+  }),
+
+  body4: recipe({
+    base: {
+      fontSize: fontSize.sm,
+      fontWeight: fontWeight.regular,
+      lineHeight: "160%",
+    },
+  }),
+
+  caption1: recipe({
+    base: {
+      fontSize: fontSize.xs,
+      fontWeight: fontWeight.medium,
+      lineHeight: "140%",
+    },
+  }),
+
+  caption2: recipe({
+    base: {
+      fontSize: fontSize.xs,
+      fontWeight: fontWeight.regular,
+      lineHeight: "140%",
+    },
+  }),
+} as const;
