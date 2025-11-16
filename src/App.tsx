@@ -14,7 +14,7 @@ function App() {
       <div className={typography.body3()}>pretendard_M_14_1</div>
       <div className={typography.body4()}>pretendard_R_14_2</div>
       <div className={typography.caption1()}>pretendard_M_12_1</div>
-      <div className={typography.caption1()}>pretendard_R_12_1</div>
+      <div className={typography.caption2()}>pretendard_R_12_1</div>
     </div>
   );
 }
