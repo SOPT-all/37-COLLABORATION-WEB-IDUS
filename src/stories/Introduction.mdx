@@ -1,0 +1,108 @@
+# 👋 안녕하세요! 디자인 시스템 사용 설명서입니다.
+
+이 스토리북은 SOPT 합동세미나 [모바일 웹3조] 아이디어스의 UI 컴포넌트들을 모아둔 문서입니다.
+
+## 🚀 시작하기
+
+```bash
+# 프로젝트 실행
+pnpm dev
+
+# 스토리북 실행
+pnpm storybook
+```
+
+## ✨스토리 파일 작성 규칙
+
+스토리 파일 이름은 `Component.stories.ts` 형식을 따릅니다.
+스토리 파일을 작성할 때는 아래와 같은 규칙을 권장합니다.
+
+**1. 파일 위치**
+
+스토리 파일은 구현한 컴포넌트와 같은 폴더에 위치시키는 것을 원칙으로 합니다. (스토리북 파일 위치는 `/src/stories`로 변경될 수 있습니다.)
+
+```
+/src/shared/components/Button/
+  ┣ Button.tsx         (컴포넌트)
+  ┣ Button.css.ts      (스타일)
+  ┗ Button.stories.tsx (스토리) ⭐️
+```
+
+**2. 파일 내부 작성되어야 할 속성(필수)**
+
+- `title` : meta 객체의 `title` 속성은 Storybook 사이드바(메뉴)를 결정
+- `argTypes` : `argTypes`는 Controls탭에 표시될 Props 테이블을 정의합니다. TypeScript 설정으로 `argTypes`는 Props 타입을 읽어 자동으로 생성됩니다.
+  따라서, argTypes는 자동 추론된 타입을 덮어쓸 때만 수동으로 작성합니다.
+
+## ✅ 스토리 파일 작성 예시
+
+```ts
+import type { Meta, StoryObj } from "@storybook/react-vite";
+
+import { Button } from "./Button";
+
+const meta = {
+  title: "Example/Button",
+  component: Button,
+  argTypes: {
+    backgroundColor: { control: "color" },
+  },
+};
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Primary: Story = {
+  args: {
+    primary: true,
+    label: "Button",
+  },
+};
+
+export const Secondary: Story = {
+  args: {
+    label: "Button",
+  },
+};
+```
+
+## 📝 스토리 파일 템플릿 (Snippet)
+
+매번 직접 스토리 파일을 직접 작성하는 것은 비효율적이기 때문에 (1) Snippet을 설정하거나, (2) AI의 도움(ㅎㅎ)을 받아 작성하도록 합시다.
+
+### Snippet 생성 방법
+
+1. `Ctrl(cmd) + Shift + P` 단축키 입력
+2. `Snippets: Configure Snippets` 선택
+3. `storybook` 입력하여, 해당 snippet 파일 생성
+4. 아래 코드를 복사, 붙여넣기 하고 저장.
+
+```js
+{
+  "Storybook Component Template": {
+    "prefix": "story",
+    "body": [
+      "import type { Meta, StoryObj } from '@storybook/react-vite';",
+      "",
+      "import ${TM_FILENAME_BASE/(.*)\\.stories$/${1}/} from './${TM_FILENAME_BASE/(.*)\\.stories$/${1}/}';",
+      "",
+      "const meta: Meta<typeof ${TM_FILENAME_BASE/(.*)\\.stories$/${1}/}> = {",
+      "  component: ${TM_FILENAME_BASE/(.*)\\.stories$/${1}/},",
+      "  title: '${TM_FILENAME_BASE/(.*)\\.stories$/${1}/}',",
+      "  argTypes: {},",
+      "};",
+      "export default meta;",
+      "",
+      "type Story = StoryObj<typeof ${TM_FILENAME_BASE/(.*)\\.stories$/${1}/}>;",
+      "",
+      "export const Default: Story = {",
+      "  args: {},",
+      "};"
+    ],
+    "description": "Storybook Template"
+  }
+}
+```
+
+5. 이후 스토리 파일을 생성하고, 해당 파일 안에서 `story`를 입력
+6. snippet을 수정하여 스토리 파일을 작성
