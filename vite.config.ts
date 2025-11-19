@@ -1,8 +1,6 @@
-// Vite 빌드 도구의 설정 파일
-// Vite는 이 파일을 읽고 프로젝트에 맞게 최적화된 빌드와 개발 환경을 구성함
-
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
+import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin";
 import svgr from "vite-plugin-svgr";
 import path from "path";
 
@@ -10,6 +8,7 @@ import path from "path";
 export default defineConfig({
   plugins: [
     react(),
+    vanillaExtractPlugin(),
     svgr({
       svgrOptions: {
         ref: true, // JavaScript로 SVG 직접 접근 가능(useRef 등)
