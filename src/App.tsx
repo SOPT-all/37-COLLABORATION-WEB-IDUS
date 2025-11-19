@@ -1,5 +1,7 @@
 function App() {
-  return <div>37-collaboration-web-idus</div>;
+  return (
+    <div></div>
+  );
 }
 
 export default App;
