@@ -1,0 +1,14 @@
+echo "✅ 커밋 이전에 lint 규칙 검사"
+if pnpm lint-staged;then
+  branch=$(git branch --show-current)
+  if [ "$branch" = "main" ]; then
+    echo "main 브랜치에 커밋하지 마세요!"
+    exit 1
+  else
+    echo '✨ staging의 lint 규칙검사 완료'
+    exit 0
+  fi
+else 
+    echo '⚠️ staging의 lint 규칙검사 오류 발생'
+    exit 1
+fi

@@ -1,3 +1,4 @@
+import { type ReactNode } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
@@ -16,7 +17,7 @@ const createQueryClient = () => {
 export default function QueryProvider({
   children,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
   const queryClient = createQueryClient();
 

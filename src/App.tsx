@@ -1,9 +1,7 @@
 function App() {
   return (
-    <div>
-      37-collaboration-web-idus
-    </div>
-  )
+    <div></div>
+  );
 }
 
-export default App
+export default App;
