@@ -10,7 +10,6 @@ globalStyle("body", {
   maxWidth: "100vw", // 작은 화면 대응
   margin: "0 auto", // 큰 화면에서 중앙 정렬
   fontFamily: "Pretendard",
-  letterSpacing: "-0.025em",
 });
 
 globalStyle("html, body, #root", {

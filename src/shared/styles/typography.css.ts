@@ -1,84 +1,79 @@
-import { recipe } from "@vanilla-extract/recipes";
-import { fontSize, fontWeight } from "./tokens/font.css";
+/**
+ * Typography Design Tokens
+ * 프로젝트 전역에서 사용되는 타이포그래피 토큰을 정의합니다.
+ * html { font-size: 62.5% } 기준 (1rem = 10px)
+ */
 
-export const typography = {
-  display: recipe({
-    base: {
-      fontSize: fontSize["4xl"],
-      fontWeight: fontWeight.semiBold,
-      lineHeight: "140%",
-    },
-  }),
+import { fontWeight } from "./tokens/font.css";
 
-  heading1: recipe({
-    base: {
-      fontSize: fontSize["2xl"],
-      fontWeight: fontWeight.semiBold,
-      lineHeight: "140%",
-    },
-  }),
-
-  heading2: recipe({
-    base: {
-      fontSize: fontSize.xl,
-      fontWeight: fontWeight.semiBold,
-      lineHeight: "140%",
-    },
-  }),
-
-  heading3: recipe({
-    base: {
-      fontSize: fontSize.lg,
-      fontWeight: fontWeight.semiBold,
-      lineHeight: "140%",
-    },
-  }),
-
-  body1: recipe({
-    base: {
-      fontSize: fontSize.base,
-      fontWeight: fontWeight.semiBold,
-      lineHeight: "140%",
-    },
-  }),
-
-  body2: recipe({
-    base: {
-      fontSize: fontSize.base,
-      fontWeight: fontWeight.medium,
-      lineHeight: "140%",
-    },
-  }),
-
-  body3: recipe({
-    base: {
-      fontSize: fontSize.sm,
-      fontWeight: fontWeight.medium,
-      lineHeight: "140%",
-    },
-  }),
-
-  body4: recipe({
-    base: {
-      fontSize: fontSize.sm,
-      fontWeight: fontWeight.regular,
-      lineHeight: "160%",
-    },
-  }),
-
-  caption1: recipe({
-    base: {
-      fontSize: fontSize.xs,
-      fontWeight: fontWeight.medium,
-      lineHeight: "140%",
-    },
-  }),
-
-  caption2: recipe({
-    base: {
-      fontSize: fontSize.xs,
-      fontWeight: fontWeight.regular,
-      lineHeight: "140%",
-    },
-  }),
+export const typographyVars = {
+  display: {
+    fontSize: "5rem", // 50px
+    fontWeight: fontWeight.semibold,
+    lineHeight: "140%",
+    letterSpacing: "-0.025em",
+  },
+  heading1: {
+    fontSize: "3.2rem", // 32px
+    fontWeight: fontWeight.semibold,
+    lineHeight: "140%",
+    letterSpacing: "-0.025em",
+  },
+  heading2: {
+    fontSize: "2.4rem", // 24px
+    fontWeight: fontWeight.semibold,
+    lineHeight: "140%",
+    letterSpacing: "-0.025em",
+  },
+  heading3: {
+    fontSize: "1.8rem", // 18px
+    fontWeight: fontWeight.semibold,
+    lineHeight: "140%",
+    letterSpacing: "-0.025em",
+  },
+  body1: {
+    fontSize: "1.6rem", // 16px
+    fontWeight: fontWeight.semibold,
+    lineHeight: "140%",
+    letterSpacing: "-0.025em",
+  },
+  body2: {
+    fontSize: "1.6rem", // 16px
+    fontWeight: fontWeight.medium,
+    lineHeight: "140%",
+    letterSpacing: "-0.025em",
+  },
+  body3: {
+    fontSize: "1.4rem", // 14px
+    fontWeight: fontWeight.medium,
+    lineHeight: "140%",
+    letterSpacing: "-0.025em",
+  },
+  body4: {
+    fontSize: "1.4rem", // 14px
+    fontWeight: fontWeight.regular,
+    lineHeight: "160%",
+    letterSpacing: "-0.025em",
+  },
+  caption1: {
+    fontSize: "1.2rem", // 12px
+    fontWeight: fontWeight.medium,
+    lineHeight: "140%",
+    letterSpacing: "-0.025em",
+  },
+  caption2: {
+    fontSize: "1.2rem", // 12px
+    fontWeight: fontWeight.regular,
+    lineHeight: "140%",
+    letterSpacing: "-0.025em",
+  },
 } as const;
+
+// typography 헬퍼 함수
+export type TypographyKey = keyof typeof typographyVars;
+
+export const typographyStyle = (key: TypographyKey) => {
+  const styleValue = typographyVars[key];
+  if (!styleValue) throw new Error(`Invalid typography key: ${key}`);
+  return styleValue;
+};
