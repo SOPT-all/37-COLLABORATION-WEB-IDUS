@@ -9,6 +9,7 @@ globalStyle(
       [layers.reset]: {
         all: "unset",
         display: "revert",
+        fontFamily: "inherit",
       },
     },
   }
