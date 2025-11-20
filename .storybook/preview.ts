@@ -10,6 +10,7 @@ const preview: Preview = {
         date: /Date$/i,
       },
     },
+    actions: { argTypesRegex: "^on[A-Z].*" }, // on 핸들링 함수 감지
     tags: ["autodocs"], // 자동 문서화
   },
 };
