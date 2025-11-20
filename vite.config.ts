@@ -1,10 +1,18 @@
+/// <reference types="vitest/config" />
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin";
 import svgr from "vite-plugin-svgr";
-import path from "path";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import { storybookTest } from "@storybook/addon-vitest/vitest-plugin";
+import { playwright } from "@vitest/browser-playwright";
 
-// https://vite.dev/config/
+const dirname =
+  typeof __dirname !== "undefined"
+    ? __dirname
+    : path.dirname(fileURLToPath(import.meta.url));
+
 export default defineConfig({
   plugins: [
     react(),
@@ -19,13 +27,39 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
-      "@shared": path.resolve(__dirname, "./src/shared"),
-      "@pages": path.resolve(__dirname, "./src/pages"),
-      "@routes": path.resolve(__dirname, "./src/routes"),
-      "@svg": path.resolve(__dirname, "./src/assets/svg"),
-      "@img": path.resolve(__dirname, "./src/assets/img"),
-      "@styles": path.resolve(__dirname, "./src/shared/styles"),
+      "@": path.resolve(dirname, "./src"),
+      "@shared": path.resolve(dirname, "./src/shared"),
+      "@pages": path.resolve(dirname, "./src/pages"),
+      "@routes": path.resolve(dirname, "./src/routes"),
+      "@svg": path.resolve(dirname, "./src/assets/svg"),
+      "@img": path.resolve(dirname, "./src/assets/img"),
+      "@styles": path.resolve(dirname, "./src/shared/styles"),
     },
+  },
+  test: {
+    projects: [
+      {
+        extends: true,
+        plugins: [
+          storybookTest({
+            configDir: path.join(dirname, ".storybook"),
+          }),
+        ],
+        test: {
+          name: "storybook",
+          browser: {
+            enabled: true,
+            headless: true,
+            provider: playwright({}),
+            instances: [
+              {
+                browser: "chromium",
+              },
+            ],
+          },
+          setupFiles: [".storybook/vitest.setup.ts"],
+        },
+      },
+    ],
   },
 });

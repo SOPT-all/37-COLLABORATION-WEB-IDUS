@@ -1,3 +1,5 @@
+// For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
+import storybook from "eslint-plugin-storybook";
 import js from "@eslint/js";
 import globals from "globals";
 import importPlugin from "eslint-plugin-import";
@@ -63,5 +65,6 @@ export default [
       "no-console": ["warn", { allow: ["warn", "error"] }], // console.log() 경고. 그 외 허용
     },
   },
+  ...storybook.configs["flat/recommended"],
   eslintConfigPrettier,
 ];
