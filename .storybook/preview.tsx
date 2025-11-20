@@ -1,4 +1,5 @@
 import type { Preview } from "@storybook/react-vite";
+import QueryProvider from "../src/shared/apis/query-client";
 import "@shared/styles/global.css";
 
 const preview: Preview = {
@@ -13,6 +14,13 @@ const preview: Preview = {
     actions: { argTypesRegex: "^on[A-Z].*" }, // on 핸들링 함수 감지
     tags: ["autodocs"], // 자동 문서화
   },
+  decorators: [
+    (Story) => (
+      <QueryProvider>
+        <Story />
+      </QueryProvider>
+    ),
+  ],
 };
 
 export default preview;

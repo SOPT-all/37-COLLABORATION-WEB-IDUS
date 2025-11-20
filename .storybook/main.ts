@@ -27,14 +27,14 @@ const config: StorybookConfig = {
     reactDocgen: "react-docgen-typescript",
     reactDocgenTypescriptOptions: {
       shouldExtractLiteralValuesFromEnum: true,
-      propFilter: (prop: any) =>
+      propFilter: (prop) =>
         prop.parent ? !/node_modules/.test(prop.parent.fileName) : true,
     },
   },
 
   async viteFinal(config) {
     return mergeConfig(config, {
-      // vite.config.ts에 이미 명시되어 있지만 Storybook 빌드에 포함시켜 문제방지
+      // tsconfig.app.json에 선언되었지만, 혹시 모를 적용 이슈로 중복 선언함
       plugins: [vanillaExtractPlugin()],
     });
   },
