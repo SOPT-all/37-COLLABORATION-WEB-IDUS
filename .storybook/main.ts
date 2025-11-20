@@ -15,7 +15,7 @@ const config: StorybookConfig = {
     name: "@storybook/react-vite", /// React + Vite 기반의 Storybook 설정을 사용
     options: {},
   },
-  staticDirs: ["../src/public"], // 정적 파일이 있는 경로를 지정
+  staticDirs: ["../public"], // 정적 파일이 있는 경로를 지정
   core: {
     disableTelemetry: true, // 사용자 데이터를 수집하지 않도록 설정
   },
@@ -25,7 +25,7 @@ const config: StorybookConfig = {
     reactDocgen: "react-docgen-typescript",
     reactDocgenTypescriptOptions: {
       shouldExtractLiteralValuesFromEnum: true,
-      propFilter: (prop) =>
+      propFilter: (prop:any) =>
         prop.parent ? !/node_modules/.test(prop.parent.fileName) : true,
     },
   },
