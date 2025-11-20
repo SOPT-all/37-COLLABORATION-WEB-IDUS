@@ -1,4 +1,6 @@
 import type { StorybookConfig } from "@storybook/react-vite";
+import { mergeConfig } from "vite";
+import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin";
 
 const config: StorybookConfig = {
   // 스토리 파일의 위치를 지정하는 배열
@@ -25,9 +27,16 @@ const config: StorybookConfig = {
     reactDocgen: "react-docgen-typescript",
     reactDocgenTypescriptOptions: {
       shouldExtractLiteralValuesFromEnum: true,
-      propFilter: (prop:any) =>
+      propFilter: (prop: any) =>
         prop.parent ? !/node_modules/.test(prop.parent.fileName) : true,
     },
+  },
+
+  async viteFinal(config) {
+    return mergeConfig(config, {
+      // vite.config.ts에 이미 명시되어 있지만 Storybook 빌드에 포함시켜 문제방지
+      plugins: [vanillaExtractPlugin()],
+    });
   },
 };
 export default config;
