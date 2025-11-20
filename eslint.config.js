@@ -1,3 +1,5 @@
+// For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
+import storybook from "eslint-plugin-storybook";
 import js from "@eslint/js";
 import globals from "globals";
 import importPlugin from "eslint-plugin-import";
@@ -8,7 +10,7 @@ import typescriptParser from "@typescript-eslint/parser";
 import eslintConfigPrettier from "eslint-config-prettier";
 
 export default [
-  { ignores: ["dist", "node_modules", "build", "*.config.js"] },
+  { ignores: ["dist", "node_modules", "build", "*.config.js", "*.config.ts"] },
 
   importPlugin.flatConfigs.recommended,
   importPlugin.flatConfigs.typescript,
@@ -22,6 +24,13 @@ export default [
     settings: {
       react: {
         version: "detect",
+      },
+      // import/resolver: TypeScript path alias (@svg 등)를 ESLint가 인식하도록 설정
+      "import/resolver": {
+        typescript: {
+          alwaysTryTypes: true,
+          project: "./tsconfig.app.json",
+        },
       },
     },
     languageOptions: {
@@ -56,5 +65,6 @@ export default [
       "no-console": ["warn", { allow: ["warn", "error"] }], // console.log() 경고. 그 외 허용
     },
   },
+  ...storybook.configs["flat/recommended"],
   eslintConfigPrettier,
 ];
