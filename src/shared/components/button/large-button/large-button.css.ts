@@ -24,7 +24,7 @@ export const buttonStyles = recipe({
         backgroundColor: color.black[200],
         border: "1px solid transparent",
         // default에는 border가 없고, active에는 border가 있으면
-        // 상태 변경 과정에서 버튼 layout이 2px 밀리는 layout shift 발생
+        // 상태 변경 과정에서 버튼 layout이 2px 밀리며 layout shift 발생
         // -> transparent border 추가로 layout shift 방지
       },
       active: {

@@ -20,12 +20,12 @@ const ButtonTest = () => {
       <section>
         <h2>Small Buttons</h2>
         <div style={{ display: "flex", gap: "1rem", marginTop: "1rem" }}>
-          <SmallButton variant={SMALL_BUTTON_VARIANTS.GIFT}>
+          <SmallButton type="button" variant={SMALL_BUTTON_VARIANTS.GIFT}>
             선물하기
           </SmallButton>
 
-          <SmallButton variant={SMALL_BUTTON_VARIANTS.PURCHASE}>
-            선물하기
+          <SmallButton type="submit" variant={SMALL_BUTTON_VARIANTS.PURCHASE}>
+            구매하기
           </SmallButton>
         </div>
       </section>
@@ -39,16 +39,17 @@ const ButtonTest = () => {
             gap: "1rem",
             marginTop: "1rem",
           }}>
-          <LargeButton variant={LARGE_BUTTON_VARIANTS.DEFAULT}>
-            구매하기
+          <LargeButton type="reset" variant={LARGE_BUTTON_VARIANTS.DEFAULT}>
+            작품 구매 후기 더보기
           </LargeButton>
         </div>
       </section>
 
       <section>
-        <h2>Interactive Example</h2>
+        <h2>Large Button 인터렉션</h2>
         <div style={{ marginTop: "1rem" }}>
           <LargeButton
+            type="button"
             variant={
               isDetailOpen
                 ? LARGE_BUTTON_VARIANTS.ACTIVE
