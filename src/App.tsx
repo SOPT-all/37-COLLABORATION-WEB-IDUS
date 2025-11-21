@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { LikeButton } from "./pages/home/components/like-button/like-button";
+import { LikeButton } from "./shared/components/like-button/like-button";
 
 function App() {
   const [makerLiked, setMakerLiked] = useState(false);
