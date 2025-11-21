@@ -1,6 +1,6 @@
 import { createBrowserRouter, Navigate } from "react-router";
 import Layout from "@/shared/components/layout/layout";
-import ProductPage from "@/pages/product/product";
+import ProductPage from "@/pages/product/product-page";
 
 export const router = createBrowserRouter([
   {
