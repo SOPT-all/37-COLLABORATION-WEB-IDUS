@@ -1,7 +1,8 @@
-import ProductPage from "@/pages/product/product";
+import { RouterProvider } from "react-router";
+import { router } from "@/routes/router";
 
-function App() {
-  return <ProductPage />;
-}
+const App = () => {
+  return <RouterProvider router={router} />;
+};
 
 export default App;

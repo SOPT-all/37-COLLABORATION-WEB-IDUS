@@ -1,7 +1,8 @@
 const RelatedProduct = () => {
-  console.log("RelatedProduct 두두등장");
+  console.log("🍀 RelatedProduct");
+
   return (
-    <section style={{ padding: "2rem", minHeight: "120vh" }}>
+    <section style={{ border: `1px solid red`, padding: "2rem" }}>
       <h2>연관 상품</h2>
       <div style={{ display: "flex", gap: "1rem", marginTop: "1rem" }}>
         <div style={{ padding: "1rem", border: "1px solid #ddd" }}>

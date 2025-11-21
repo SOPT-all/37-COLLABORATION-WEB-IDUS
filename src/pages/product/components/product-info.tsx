@@ -1,8 +1,8 @@
 const ProductInfo = () => {
-  console.log("ProductInfo 두두등장");
+  console.log("🦊 ProductInfo");
 
   return (
-    <section style={{ padding: "2rem", minHeight: "120vh" }}>
+    <section style={{ border: `1px solid purple`, padding: "2rem" }}>
       <h2>상품 정보</h2>
       <p>가격: 29,900원</p>
       <p>판매자: 아이디어스</p>

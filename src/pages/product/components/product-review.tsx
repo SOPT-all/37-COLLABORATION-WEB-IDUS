@@ -1,8 +1,8 @@
 const ProductReview = () => {
-  console.log("ProductReview 두두등장");
+  console.log("🐥 ProductReview");
 
   return (
-    <section style={{ padding: "2rem", minHeight: "120vh" }}>
+    <section style={{ border: `1px solid green`, padding: "2rem" }}>
       <h2>후기 및 댓글</h2>
       <div style={{ marginTop: "1rem" }}>
         <div
@@ -14,10 +14,7 @@ const ProductReview = () => {
           <p>
             <strong>사용자1</strong>
           </p>
-          <p>
-            좋아 좋아 좋아 좋아 좋아 좋아 좋아 좋아 좋아 좋아 좋아 좋아 좋아
-            좋아 좋아 좋아 좋아 좋아 좋아 좋아{" "}
-          </p>
+          <p>좋아요</p>
         </div>
         <div
           style={{
@@ -28,19 +25,13 @@ const ProductReview = () => {
           <p>
             <strong>사용자2</strong>
           </p>
-          <p>
-            휼륭해 휼륭해 휼륭해 휼륭해 휼륭해 휼륭해 휼륭해 휼륭해 휼륭해
-            휼륭해 휼륭해 휼륭해 휼륭해 휼륭해 휼륭해{" "}
-          </p>
+          <p>휼륭해요</p>
         </div>
         <div style={{ padding: "1rem", border: "1px solid #ddd" }}>
           <p>
             <strong>사용자3</strong>
           </p>
-          <p>
-            재구매 재구매 재구매 재구매 재구매 재구매 재구매 재구매 재구매
-            재구매 재구매 재구매 재구매 재구매{" "}
-          </p>
+          <p>재구매할래요</p>
         </div>
       </div>
     </section>

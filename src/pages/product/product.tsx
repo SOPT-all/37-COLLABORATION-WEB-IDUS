@@ -1,6 +1,7 @@
 import { lazy } from "react";
 import LazySection from "@/shared/components/lazy-section/lazy-section";
 import ProductInfo from "./components/product-info";
+import LoadingFallback from "@/shared/components/layout/loading-fallback";
 
 // Code splitting: 각 컴포넌트를 별도 chunk로 분리
 const ProductDetail = lazy(() => import("./components/product-detail"));
@@ -14,18 +15,15 @@ const ProductPage = () => {
       <ProductInfo />
 
       {/* 나머지 컴포넌트들은 스크롤해서 화면에 보이면 로드 */}
-      <LazySection
-        fallback={<div style={{ padding: "2rem" }}>상세정보 로딩 중...</div>}>
+      <LazySection fallback={<LoadingFallback />}>
         <ProductDetail />
       </LazySection>
 
-      <LazySection
-        fallback={<div style={{ padding: "2rem" }}>후기 로딩 중...</div>}>
+      <LazySection fallback={<LoadingFallback />}>
         <ProductReview />
       </LazySection>
 
-      <LazySection
-        fallback={<div style={{ padding: "2rem" }}>연관상품 로딩 중...</div>}>
+      <LazySection fallback={<LoadingFallback />}>
         <RelatedProduct />
       </LazySection>
     </div>
