@@ -21,6 +21,7 @@ export const header = style({
   justifyContent: "center",
 });
 
+// 캐러셀 스타일
 export const carouselContainer = style({
   width: "100%",
   height: "100%",
@@ -41,6 +42,7 @@ export const image = style({
   objectFit: "cover",
 });
 
+// 캐러셀 푸터 에셋 (이미지 번호, 뱃지) 스타일
 export const footer = style({
   position: "absolute",
   bottom: "0",
@@ -53,7 +55,7 @@ export const footer = style({
   padding: "0 1.6rem 1.6rem 1.6rem",
 });
 
-export const page = style({
+export const index = style({
   padding: "0.6rem 0.8rem",
   borderRadius: "0.5rem",
   backgroundColor: "rgba(18, 18, 18, 0.32)",
