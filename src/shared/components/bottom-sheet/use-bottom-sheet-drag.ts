@@ -19,7 +19,21 @@ export const useBottomSheetDrag = ({ onClose }: UseBottomSheetDragProps) => {
     setIsDragging(true);
   };
 
-  // 드래그 중
+  // sheet을 실제로 드래그하는 로직
+  const moveSheet = (currentY: number) => {
+    if (sheetDragStartY === null) {
+      setSheetDragStartY(currentY);
+    }
+
+    const sheetDeltaY = currentY - (sheetDragStartY ?? currentY);
+    setDragDistance(sheetDeltaY);
+
+    if (sheetRef.current) {
+      sheetRef.current.style.transform = `translateY(${sheetDeltaY}px)`;
+    }
+  };
+
+  // 드래그 중 - content 영역
   // 이게 드래그 중 계속 호출됨. 성능 무리 안가나?
   const handleTouchMove = (e: React.TouchEvent) => {
     console.log("드래그 중");
@@ -30,20 +44,23 @@ export const useBottomSheetDrag = ({ onClose }: UseBottomSheetDragProps) => {
 
     // 드래그가 위에서 아래로 진행될 때 if문 진입(content를 위로 스크롤하거나, 바텀시트를 닫기 위한 드래그 액션)
     if (deltaY > 0) {
-      // content의 최상단에 도달했을때 if문 진입
+      // content의 최상단에 도달했을때 if문 진입 및 sheet 드래그
       if (contentRef.current && contentRef.current.scrollTop === 0) {
-        if (sheetDragStartY === null) {
-          setSheetDragStartY(currentY);
-        }
-
-        const sheetDeltaY = currentY - (sheetDragStartY ?? currentY);
-        setDragDistance(sheetDeltaY);
-
-        if (sheetRef.current) {
-          sheetRef.current.style.transform = `translateY(${sheetDeltaY}px)`;
-          // sheet을 드래그 거리만큼 실시간으로 움직임
-        }
+        moveSheet(currentY);
       }
+    }
+  };
+
+  // 드래그 중 - drag handler 영역
+  const handleDragHandlerMove = (e: React.TouchEvent) => {
+    if (!isDragging) return;
+
+    const currentY = e.touches[0].clientY;
+    const deltaY = currentY - startY;
+
+    if (deltaY > 0) {
+      // drag handler 조작 시 scrollTop 체크 없이 바로 sheet 드래그
+      moveSheet(currentY);
     }
   };
 
@@ -64,28 +81,6 @@ export const useBottomSheetDrag = ({ onClose }: UseBottomSheetDragProps) => {
 
     setDragDistance(0);
     setSheetDragStartY(null);
-  };
-
-  // 드래그 핸들러용 메서드
-  const handleDragHandlerMove = (e: React.TouchEvent) => {
-    if (!isDragging) return;
-
-    const currentY = e.touches[0].clientY;
-    const deltaY = currentY - startY;
-
-    if (deltaY > 0) {
-      // drag handler 조작 시 scrollTop 체크 없이 바로 sheet 드래그
-      if (sheetDragStartY === null) {
-        setSheetDragStartY(currentY);
-      }
-
-      const sheetDeltaY = currentY - (sheetDragStartY ?? currentY);
-      setDragDistance(sheetDeltaY);
-
-      if (sheetRef.current) {
-        sheetRef.current.style.transform = `translateY(${sheetDeltaY}px)`;
-      }
-    }
   };
 
   return {
