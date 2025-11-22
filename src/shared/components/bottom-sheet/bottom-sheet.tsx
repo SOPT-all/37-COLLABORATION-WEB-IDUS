@@ -39,13 +39,13 @@ const BottomSheet = ({ isOpen, onClose, children }: Props) => {
     // TODO: 접근성 고려
     <div className={styles.overlay}>
       <div className={styles.backdrop} onClick={onClose} />
-      <div
-        ref={sheetRef}
-        className={styles.sheet}
-        onTouchStart={handleDragStart}
-        onTouchMove={handleDragMove}
-        onTouchEnd={handleDragEnd}>
-        <div ref={contentRef} className={styles.content}>
+      <div ref={sheetRef} className={styles.sheet}>
+        <div
+          ref={contentRef}
+          className={styles.content}
+          onTouchStart={handleDragStart}
+          onTouchMove={handleDragMove}
+          onTouchEnd={handleDragEnd}>
           {children}
         </div>
       </div>
