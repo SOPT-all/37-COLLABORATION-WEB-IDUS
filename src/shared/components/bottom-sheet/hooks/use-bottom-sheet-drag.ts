@@ -4,6 +4,11 @@ interface UseBottomSheetDragProps {
   onClose: () => void;
 }
 
+// 상수 정의
+const CLOSE_THRESHOLD = 200; // 바텀시트를 닫기 위한 최소 드래그 거리 (px)
+const CLOSE_TRANSITION_DURATION = 200; // sheet 닫힐 때 transition 시간 (ms)
+const RETURN_TRANSITION_DURATION = 300; // sheet 원위치 복귀 시 transition 시간 (ms)
+
 export const useBottomSheetDrag = ({ onClose }: UseBottomSheetDragProps) => {
   const sheetRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -67,19 +72,19 @@ export const useBottomSheetDrag = ({ onClose }: UseBottomSheetDragProps) => {
     setIsDragging(false);
 
     if (sheetRef.current) {
-      // 200px 이상 드래그하면 닫기
-      if (dragDistance > 200) {
+      // CLOSE_THRESHOLD 이상 드래그하면 닫기
+      if (dragDistance > CLOSE_THRESHOLD) {
         // 부드럽게 아래로 내려가며 닫기
-        sheetRef.current.style.transition = "transform 0.2s ease-in";
+        sheetRef.current.style.transition = `transform ${CLOSE_TRANSITION_DURATION}ms ease-in`;
         sheetRef.current.style.transform = "translateY(100%)";
 
         // transition 완료 후 onClose 호출
         setTimeout(() => {
           onClose();
-        }, 200);
+        }, CLOSE_TRANSITION_DURATION);
       } else {
         // 원위치로 복귀
-        sheetRef.current.style.transition = "transform 0.3s ease-out";
+        sheetRef.current.style.transition = `transform ${RETURN_TRANSITION_DURATION}ms ease-out`;
         sheetRef.current.style.transform = "translateY(0)";
       }
     }
