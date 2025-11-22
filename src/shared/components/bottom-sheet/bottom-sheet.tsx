@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { createPortal } from "react-dom";
 import * as styles from "./bottom-sheet.css";
+import { useBottomSheetDrag } from "./use-bottom-sheet-drag";
 
 interface Props {
   isOpen: boolean;
@@ -9,7 +10,15 @@ interface Props {
 }
 
 const BottomSheet = ({ isOpen, onClose, children }: Props) => {
-  // Body scroll lock: 바텀시트 열렸을 때 뒷배경 스크롤 방지
+  const {
+    sheetRef,
+    contentRef,
+    handleDragStart,
+    handleDragMove,
+    handleDragEnd,
+  } = useBottomSheetDrag({ onClose });
+
+  // 바텀시트가 열렸을 때 뒷배경 스크롤 방지
   useEffect(() => {
     if (isOpen) {
       const originalOverflow = document.body.style.overflow;
@@ -18,11 +27,11 @@ const BottomSheet = ({ isOpen, onClose, children }: Props) => {
       // body의 overflow 속성을 hidden으로 만들면 뒷배경 스크롤 차단 가능
 
       return () => {
-        // BottomSheet가 언마운트될 때 클린업 함수가 실행되며 body의 스크롤 제어 속성인 overflow를 원래 값으로 복구
+        // BottomSheet가 언마운트될 때 클린업 함수가 실행되며 element 'body'의 스크롤 제어 속성인 overflow를 원래 값으로 복구
         document.body.style.overflow = originalOverflow;
       };
     }
-  }, [isOpen]); // BottomSheet 마운트 시 + isOpen이 변경될 때마다 실행
+  }, [isOpen]); // BottomSheet 마운트 시, isOpen이 변경될 시 실행
 
   if (!isOpen) return null;
 
@@ -30,8 +39,15 @@ const BottomSheet = ({ isOpen, onClose, children }: Props) => {
     // TODO: 접근성 고려
     <div className={styles.overlay}>
       <div className={styles.backdrop} onClick={onClose} />
-      <div className={styles.sheet}>
-        <div className={styles.content}>{children}</div>
+      <div
+        ref={sheetRef}
+        className={styles.sheet}
+        onTouchStart={handleDragStart}
+        onTouchMove={handleDragMove}
+        onTouchEnd={handleDragEnd}>
+        <div ref={contentRef} className={styles.content}>
+          {children}
+        </div>
       </div>
     </div>,
     document.body

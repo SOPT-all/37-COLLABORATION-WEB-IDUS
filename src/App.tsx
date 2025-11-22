@@ -1,11 +1,7 @@
-import BottomSheet from "@/shared/components/bottom-sheet/bottom-sheet";
+import BottomSheetTest from "@/shared/components/bottom-sheet/BottomSheetTest";
 
 function App() {
-  return (
-    <BottomSheet isOpen={true}>
-      <div>바텀시트</div>
-    </BottomSheet>
-  );
+  return <BottomSheetTest />;
 }
 
 export default App;
