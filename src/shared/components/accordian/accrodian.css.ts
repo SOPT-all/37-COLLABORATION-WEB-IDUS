@@ -44,6 +44,29 @@ export const title = recipe({
   },
 });
 
+export const titleWrapper = style({
+  display: "flex",
+  flexDirection: "column",
+  gap: "0.8rem",
+});
+
+export const bottomSheetsOption = style({
+  ...typographyVars.caption2,
+  color: color.gray[100],
+});
+
+export const optionIconWrapper = style({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: "0.4rem",
+});
+
+export const makerOption = style({
+  ...typographyVars.body3,
+  color: color.gray[100],
+});
+
 export const toggleIcon = recipe({
   base: { transition: "transform 0.3s ease" },
   variants: {
