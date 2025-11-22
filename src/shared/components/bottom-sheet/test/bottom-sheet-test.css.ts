@@ -1,5 +1,5 @@
-// 바텀시트 테스트 파일
-// 추후 제거 예정
+// 바텀시트 테스트용
+// 추후 삭제 예정
 
 import { style } from "@vanilla-extract/css";
 import { typographyVars } from "@/shared/styles/typography.css";

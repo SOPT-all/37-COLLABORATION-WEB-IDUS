@@ -5,7 +5,7 @@ interface UseBottomSheetDragProps {
 }
 
 // 상수 정의
-const CLOSE_THRESHOLD = 200; // 바텀시트를 닫기 위한 최소 드래그 거리 (px)
+const CLOSE_THRESHOLD = 200; // sheet을 닫기 위한 최소 드래그 거리 (px)
 const CLOSE_TRANSITION_DURATION = 200; // sheet 닫힐 때 transition 시간 (ms)
 const RETURN_TRANSITION_DURATION = 300; // sheet 원위치 복귀 시 transition 시간 (ms)
 
@@ -14,7 +14,7 @@ export const useBottomSheetDrag = ({ onClose }: UseBottomSheetDragProps) => {
   const contentRef = useRef<HTMLDivElement>(null);
   const [startY, setStartY] = useState(0); // 드래그를 시작한 y좌표
   const [sheetDragStartY, setSheetDragStartY] = useState<number | null>(null); // sheet을 내리기 시작한 y좌표
-  const [dragDistance, setDragDistance] = useState(0); // sheet을 내리기 위한 드래그 이동 거리
+  const [dragDistance, setDragDistance] = useState(0); // sheet이 내려간 거리
   const [isDragging, setIsDragging] = useState(false);
 
   // 드래그 시작
@@ -23,7 +23,7 @@ export const useBottomSheetDrag = ({ onClose }: UseBottomSheetDragProps) => {
     setIsDragging(true);
   };
 
-  // sheet을 실제로 드래그하는 로직
+  // sheet을 드래그하는 로직
   const moveSheet = (currentY: number) => {
     if (sheetDragStartY === null) {
       setSheetDragStartY(currentY);
@@ -38,7 +38,7 @@ export const useBottomSheetDrag = ({ onClose }: UseBottomSheetDragProps) => {
     }
   };
 
-  // 드래그 중 - content 영역
+  // content 영역 드래그
   const handleTouchMove = (e: React.TouchEvent) => {
     if (!isDragging) return;
 
@@ -54,7 +54,7 @@ export const useBottomSheetDrag = ({ onClose }: UseBottomSheetDragProps) => {
     }
   };
 
-  // 드래그 중 - drag handler 영역
+  // drag handler 영역 드래그
   const handleDragHandlerMove = (e: React.TouchEvent) => {
     if (!isDragging) return;
 
@@ -83,7 +83,7 @@ export const useBottomSheetDrag = ({ onClose }: UseBottomSheetDragProps) => {
           onClose();
         }, CLOSE_TRANSITION_DURATION);
       } else {
-        // 원위치로 복귀
+        // sheet 원위치로 복귀
         sheetRef.current.style.transition = `transform ${RETURN_TRANSITION_DURATION}ms ease-out`;
         sheetRef.current.style.transform = "translateY(0)";
       }

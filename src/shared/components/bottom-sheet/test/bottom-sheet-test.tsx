@@ -1,3 +1,6 @@
+// 바텀시트 테스트용
+// 추후 삭제 예정
+
 import { useState } from "react";
 import BottomSheet from "../bottom-sheet";
 import * as styles from "./bottom-sheet-test.css";
