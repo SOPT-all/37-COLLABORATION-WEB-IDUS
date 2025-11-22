@@ -14,9 +14,9 @@ const BottomSheet = ({ isOpen, onClose, children }: Props) => {
   const {
     sheetRef,
     contentRef,
-    handleDragStart,
-    handleDragMove,
-    handleDragEnd,
+    handleTouchStart,
+    handleTouchMove,
+    handleTouchEnd,
     handleDragHandlerMove,
   } = useBottomSheetDrag({ onClose });
 
@@ -43,16 +43,16 @@ const BottomSheet = ({ isOpen, onClose, children }: Props) => {
       <div className={styles.backdrop} onClick={onClose} />
       <div ref={sheetRef} className={styles.sheet}>
         <DragHandler
-          onTouchStart={handleDragStart}
+          onTouchStart={handleTouchStart}
           onTouchMove={handleDragHandlerMove}
-          onTouchEnd={handleDragEnd}
+          onTouchEnd={handleTouchEnd}
         />
         <div
           ref={contentRef}
           className={styles.content}
-          onTouchStart={handleDragStart}
-          onTouchMove={handleDragMove}
-          onTouchEnd={handleDragEnd}>
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}>
           {children}
         </div>
       </div>
