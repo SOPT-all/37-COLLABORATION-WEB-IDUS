@@ -63,6 +63,7 @@ export const useBottomSheetDrag = ({ onClose }: UseBottomSheetDragProps) => {
     }
 
     setDragDistance(0);
+    setSheetDragStartY(null);
   };
 
   return {
