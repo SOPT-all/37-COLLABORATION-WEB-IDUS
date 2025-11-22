@@ -13,11 +13,6 @@ interface LikeButtonProps {
   onClick?: () => void;
 }
 
-// 두 좋아요 버튼의 다른 점
-// 1. 전체 너비 ✅
-// 2. 클릭 시 호출되는 api -> 부모에서 정의
-// 3. 클릭 시 변경되는 svg 파일 -> svg 설정 pr이 어푸 돼야 함!! ✅
-
 export const LikeButton = ({
   type,
   liked,
