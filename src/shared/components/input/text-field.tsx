@@ -9,7 +9,7 @@ interface Props extends React.ComponentProps<"input"> {
 
 const TextField = ({ label, placeholder, type, ...props }: Props) => {
   const [isFocused, setIsFocused] = useState(false);
-  const inputRef = useRef<HTMLInputElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null); // input element 감시, X버튼 클릭 시 input value 초기화에 사용
 
   const handleDelete = () => {
     if (inputRef.current) {
