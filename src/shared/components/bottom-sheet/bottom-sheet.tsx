@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { createPortal } from "react-dom";
 import * as styles from "./bottom-sheet.css";
 import { useBottomSheetDrag } from "./use-bottom-sheet-drag";
+import DragHandler from "@/shared/components/drag-handler/drag-handler";
 
 interface Props {
   isOpen: boolean;
@@ -16,6 +17,7 @@ const BottomSheet = ({ isOpen, onClose, children }: Props) => {
     handleDragStart,
     handleDragMove,
     handleDragEnd,
+    handleDragHandlerMove,
   } = useBottomSheetDrag({ onClose });
 
   // 바텀시트가 열렸을 때 뒷배경 스크롤 방지
@@ -40,6 +42,11 @@ const BottomSheet = ({ isOpen, onClose, children }: Props) => {
     <div className={styles.overlay}>
       <div className={styles.backdrop} onClick={onClose} />
       <div ref={sheetRef} className={styles.sheet}>
+        <DragHandler
+          onTouchStart={handleDragStart}
+          onTouchMove={handleDragHandlerMove}
+          onTouchEnd={handleDragEnd}
+        />
         <div
           ref={contentRef}
           className={styles.content}

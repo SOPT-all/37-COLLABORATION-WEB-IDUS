@@ -66,11 +66,34 @@ export const useBottomSheetDrag = ({ onClose }: UseBottomSheetDragProps) => {
     setSheetDragStartY(null);
   };
 
+  // 드래그 핸들러용 메서드
+  const handleDragHandlerMove = (e: React.TouchEvent) => {
+    if (!isDragging) return;
+
+    const currentY = e.touches[0].clientY;
+    const deltaY = currentY - startY;
+
+    if (deltaY > 0) {
+      // drag handler 조작 시 scrollTop 체크 없이 바로 sheet 드래그
+      if (sheetDragStartY === null) {
+        setSheetDragStartY(currentY);
+      }
+
+      const sheetDeltaY = currentY - (sheetDragStartY ?? currentY);
+      setDragDistance(sheetDeltaY);
+
+      if (sheetRef.current) {
+        sheetRef.current.style.transform = `translateY(${sheetDeltaY}px)`;
+      }
+    }
+  };
+
   return {
     sheetRef,
     contentRef,
     handleDragStart,
     handleDragMove,
     handleDragEnd,
+    handleDragHandlerMove,
   };
 };

@@ -53,7 +53,7 @@ export const sheet = style({
 });
 
 export const content = style({
-  padding: "1.6rem",
+  padding: "0 1.6rem 1.6rem 1.6rem",
   overflowY: "auto",
   flex: 1, // sheet가 column이므로 content가 sheet의 모든 공간을 차지하도록 설정
 });
