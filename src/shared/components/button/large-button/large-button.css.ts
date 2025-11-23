@@ -1,6 +1,7 @@
 import { recipe } from "@vanilla-extract/recipes";
 import { typographyVars } from "@/shared/styles/typography.css";
 import { color } from "@/shared/styles/tokens/color.css";
+import { LARGE_BUTTON_VARIANTS } from "@/shared/constants/button";
 
 export const buttonStyles = recipe({
   base: {
@@ -18,7 +19,7 @@ export const buttonStyles = recipe({
 
   variants: {
     variant: {
-      default: {
+      [LARGE_BUTTON_VARIANTS.DEFAULT]: {
         ...typographyVars.body1,
         color: color.white[100],
         backgroundColor: color.black[200],
@@ -27,7 +28,7 @@ export const buttonStyles = recipe({
         // 상태 변경 과정에서 버튼 layout이 2px 밀리며 layout shift 발생
         // -> transparent border 추가로 layout shift 방지
       },
-      active: {
+      [LARGE_BUTTON_VARIANTS.ACTIVE]: {
         ...typographyVars.body2,
         color: color.gray[100],
         backgroundColor: color.white[100],

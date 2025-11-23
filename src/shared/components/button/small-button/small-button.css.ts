@@ -1,6 +1,7 @@
 import { recipe } from "@vanilla-extract/recipes";
 import { typographyVars } from "@/shared/styles/typography.css";
 import { color } from "@/shared/styles/tokens/color.css";
+import { SMALL_BUTTON_VARIANTS } from "@/shared/constants/button";
 
 export const buttonStyles = recipe({
   base: {
@@ -17,12 +18,12 @@ export const buttonStyles = recipe({
 
   variants: {
     variant: {
-      gift: {
+      [SMALL_BUTTON_VARIANTS.GIFT]: {
         ...typographyVars.body2,
         color: color.brand[100],
         backgroundColor: color.brand[200],
       },
-      purchase: {
+      [SMALL_BUTTON_VARIANTS.PURCHASE]: {
         ...typographyVars.body1,
         color: color.white[100],
         backgroundColor: color.brand[100],
