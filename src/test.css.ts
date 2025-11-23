@@ -4,4 +4,9 @@ export const test = style({
   display: "flex",
   flexDirection: "column",
   gap: "10px",
+  background: "pink",
+});
+
+export const bigElement = style({
+  height: "120vh",
 });
