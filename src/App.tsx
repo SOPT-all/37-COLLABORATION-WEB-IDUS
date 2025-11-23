@@ -1,11 +1,9 @@
-import { Header } from "./shared/components/header/header";
-import * as styles from "./test.css";
+import { Carousel } from "@/pages/home/components/carousel/carousel";
 
 function App() {
   return (
-    <div className={styles.test}>
-      <Header />
-      <div className={styles.bigElement}></div>
+    <div>
+      <Carousel />
     </div>
   );
 }
