@@ -2,7 +2,7 @@ import * as styles from "./tab-bar.css";
 
 interface TabBarProps {
   activeTab: "product-info" | "review" | "recommend";
-  onTabClick: (tab: "product-info" | "review" | "recommend") => void;
+  onTabClick: (_tab: "product-info" | "review" | "recommend") => void;
 }
 
 export const TabBar = ({ activeTab, onTabClick }: TabBarProps) => {
@@ -14,14 +14,14 @@ export const TabBar = ({ activeTab, onTabClick }: TabBarProps) => {
 
   return (
     <div className={styles.tabBar}>
-      {tabs.map((tab) => (
+      {tabs.map(({ id, label }) => (
         <button
-          key={tab.id}
+          key={id}
           type="button"
-          aria-selected={activeTab === tab.id}
-          className={styles.tab({ active: activeTab === tab.id })}
-          onClick={() => onTabClick(tab.id)}>
-          {tab.label}
+          aria-selected={activeTab === id}
+          className={styles.tab({ active: activeTab === id })}
+          onClick={() => onTabClick(id)}>
+          {label}
         </button>
       ))}
     </div>
