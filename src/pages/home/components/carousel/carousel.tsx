@@ -7,14 +7,15 @@ import { useCarouselLayout } from "../../hooks/use-carousel-layout";
 import { useDragCarousel } from "../../hooks/use-drag-carousel";
 import { useAutoCarousel } from "../../hooks/use-auto-carousel";
 
+const EXTENDED_IMAGES = [
+  CAROUSEL_IMAGES[CAROUSEL_IMAGES.length - 1],
+  ...CAROUSEL_IMAGES,
+  CAROUSEL_IMAGES[0],
+]; // 무한 스크롤 이미지 배열
+
 export const Carousel = () => {
   const [discountedPrice] = useState(2205); // (임시) 할인가 가격
   const carouselRef = useRef<HTMLDivElement>(null); // 캐러셀 트랙
-  const EXTENDED_IMAGES = [
-    CAROUSEL_IMAGES[CAROUSEL_IMAGES.length - 1],
-    ...CAROUSEL_IMAGES,
-    CAROUSEL_IMAGES[0],
-  ]; // 무한 스크롤 이미지 배열
 
   // 1. 자동 재생 및 이미지 인덱스 상태 관리
   const autoPlay = useAutoCarousel({
