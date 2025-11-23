@@ -20,26 +20,41 @@ function App() {
     "product-info" | "review" | "recommend"
   >("product-info");
 
-  // 스크롤 시 현재 섹션 감지
+  // IntersectionObserver로 현재 섹션 감지
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY + HEADER_HEIGHT + TAB_BAR_HEIGHT;
-
-      const productInfoSectionTop = productInfoRef.current?.offsetTop ?? 0;
-      const reviewSectionTop = reviewRef.current?.offsetTop ?? 0;
-      const recommendSectionTop = recommendRef.current?.offsetTop ?? 0;
-
-      if (scrollY >= recommendSectionTop) {
-        setActiveTab("recommend");
-      } else if (scrollY >= reviewSectionTop) {
-        setActiveTab("review");
-      } else if (scrollY >= productInfoSectionTop) {
-        setActiveTab("product-info");
-      }
+    const observerOptions = {
+      // 섹션이 화면의 중앙 즈음에 올 때
+      rootMargin: `-${window.innerHeight / 2}px 0px -${window.innerHeight / 2}px 0px`,
+      threshold: 0,
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const sectionId = entry.target.getAttribute("data-section") as
+            | "product-info"
+            | "review"
+            | "recommend";
+          if (sectionId) {
+            setActiveTab(sectionId);
+          }
+        }
+      });
+    };
+
+    const sectionObserver = new IntersectionObserver(
+      observerCallback,
+      observerOptions
+    );
+
+    // 각 섹션 관찰 시작
+    if (productInfoRef.current) sectionObserver.observe(productInfoRef.current);
+    if (reviewRef.current) sectionObserver.observe(reviewRef.current);
+    if (recommendRef.current) sectionObserver.observe(recommendRef.current);
+
+    return () => {
+      sectionObserver.disconnect();
+    };
   }, []);
 
   // 탭 클릭 시 해당 섹션으로 스크롤
@@ -76,15 +91,15 @@ function App() {
       <TabBar activeTab={activeTab} onTabClick={handleTabClick} />
 
       {/* 작품 정보, 후기, 추천 섹션들 - 탭바 아래 */}
-      <div ref={productInfoRef}>
+      <div ref={productInfoRef} data-section="product-info">
         <Section1 />
       </div>
 
-      <div ref={reviewRef}>
+      <div ref={reviewRef} data-section="review">
         <Section2 />
       </div>
 
-      <div ref={recommendRef}>
+      <div ref={recommendRef} data-section="recommend">
         <Section3 />
       </div>
     </div>
