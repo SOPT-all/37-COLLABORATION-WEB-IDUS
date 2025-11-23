@@ -63,7 +63,7 @@ export const useAutoCarousel = ({
     const handleTranslateToEnd = () => {
       setIsMoving(false);
       // 맨 앞 이미지(마지막 이미지의 복제본)에 도착하면 실제 마지막 이미지로 이동
-      if (currentCarouselIndex == 0) {
+      if (currentCarouselIndex === 0) {
         setCurrentCarouselIndex(totalImages);
       } // 맨 뒤 이미지(첫 번째 이미지의 복제본)에 도착하면 실제 첫 번째 이미지로 이동
       else if (currentCarouselIndex === totalImages + 1) {
