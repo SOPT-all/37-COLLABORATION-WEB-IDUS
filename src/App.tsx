@@ -1,9 +1,10 @@
-import { Carousel } from "@/pages/home/components/carousel/carousel";
+import { ProductSummary } from "./pages/home/components/product-summary/product-summary";
+import * as styles from "./test.css";
 
 function App() {
   return (
-    <div>
-      <Carousel />
+    <div className={styles.test}>
+      <ProductSummary />
     </div>
   );
 }
