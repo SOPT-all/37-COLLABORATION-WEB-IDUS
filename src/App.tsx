@@ -8,12 +8,12 @@ function App() {
       <Accrodian
         type="maker"
         title="제작 / 배송"
-        option="평균 1일 / 최대 1일 이내"
+        selectedOption="평균 1일 / 최대 1일 이내"
       />
       <Accrodian
         type="bottom-sheets"
         title="제목 설정"
-        selectedOption="핑크"
+        selectedOption="앨범 제목만"
         children={
           <>
             <div className={styles.children}>하하하</div>
@@ -21,7 +21,7 @@ function App() {
           </>
         }
       />
-      <Accrodian type="maker" isMakerReport={true} title="작품 제보하기" />
+      <Accrodian type="maker" iconType="arrow" title="작품 제보하기" />
     </div>
   );
 }

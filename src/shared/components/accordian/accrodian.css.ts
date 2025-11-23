@@ -28,9 +28,15 @@ export const makerBorder = style({
   borderBottom: `0.1rem solid ${color.white[300]}`,
 });
 
+export const titleWrapper = style({
+  display: "flex",
+  flexDirection: "column",
+  gap: "0.8rem",
+  justifyContent: "center",
+});
+
 export const title = recipe({
   base: {
-    alignSelf: "center",
     color: color.black[200],
   },
   variants: {
@@ -44,15 +50,14 @@ export const title = recipe({
   },
 });
 
-export const titleWrapper = style({
-  display: "flex",
-  flexDirection: "column",
-  gap: "0.8rem",
-});
-
 export const bottomSheetsOption = style({
   ...typographyVars.caption2,
+  color: color.gray[300],
+});
+
+export const selectedValue = style({
   color: color.gray[100],
+  marginLeft: "0.4rem",
 });
 
 export const optionIconWrapper = style({
@@ -70,14 +75,14 @@ export const makerOption = style({
 export const toggleIcon = recipe({
   base: { transition: "transform 0.3s ease" },
   variants: {
-    isOpen: {
+    isAccrodianOpen: {
       true: { transform: "rotate(180deg)" },
       false: { transform: "rotate(0deg)" },
     },
   },
 });
 
-export const content = style({
+export const contentWrapper = style({
   display: "grid",
   gridTemplateRows: "0fr",
   transition: "grid-template-rows 0.3s ease",
@@ -88,7 +93,7 @@ export const contentOpen = style({
   gridTemplateRows: "1fr",
 });
 
-export const contentInner = style({
+export const content = style({
   minHeight: 0,
   display: "flex",
   flexDirection: "column",

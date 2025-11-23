@@ -5,68 +5,73 @@ import { ArrowRight, ChevronDown } from "@/assets/svg";
 interface AccrodianProps {
   type: "maker" | "bottom-sheets";
   title: string;
-  option?: string;
   selectedOption?: string;
-  isMakerReport?: boolean;
+  iconType?: "arrow" | "chevron";
   onClick?: () => void;
   children?: React.ReactNode;
 }
-
 export const Accrodian = ({
   type,
   title,
-  option,
   selectedOption,
   onClick,
-  isMakerReport,
+  iconType = "chevron",
   children,
 }: AccrodianProps) => {
   const isMaker = type === "maker";
-  const [isOpen, setIsOpen] = useState(false);
+  const isArrowIcon = iconType === "arrow";
+  const [isAccrodianOpen, setIsAccrodianOpen] = useState(false);
 
   const handleAccrodianClick = () => {
-    setIsOpen((prev) => !prev);
+    setIsAccrodianOpen((prev) => !prev);
     onClick?.();
+  };
+
+  const renderIcon = () => {
+    if (isArrowIcon) return <ArrowRight />;
+    return (
+      <span className={styles.toggleIcon({ isAccrodianOpen })}>
+        <ChevronDown width={isMaker ? 24 : 20} height={isMaker ? 24 : 20} />
+      </span>
+    );
   };
 
   return (
     <div
       className={[
         styles.container({ type }),
-        type === "maker" && isMakerReport ? styles.makerBorder : "",
-      ].join(" ")}>
+        isMaker && isArrowIcon && styles.makerBorder,
+      ]
+        .filter(Boolean)
+        .join(" ")}>
       <div className={styles.accordion} onClick={handleAccrodianClick}>
         <div className={styles.titleWrapper}>
           <span className={styles.title({ type })}>{title}</span>
-
           {!isMaker && (
             <span className={styles.bottomSheetsOption}>
-              선택 | {selectedOption}
+              선택 |
+              <span className={styles.selectedValue}>{selectedOption}</span>
             </span>
           )}
         </div>
-
         <div className={styles.optionIconWrapper}>
-          {isMaker && <span className={styles.makerOption}>{option}</span>}
-          {isMakerReport ? (
-            <ArrowRight />
-          ) : (
-            <span className={styles.toggleIcon({ isOpen })}>
-              <ChevronDown
-                width={type == "maker" ? 24 : 20}
-                height={type == "maker" ? 24 : 20}
-              />
-            </span>
+          {isMaker && (
+            <span className={styles.makerOption}>{selectedOption}</span>
           )}
+          {renderIcon()}
         </div>
       </div>
-
-      <div
-        className={[styles.content, isOpen ? styles.contentOpen : ""].join(
-          " "
-        )}>
-        <div className={styles.contentInner}>{children}</div>
-      </div>
+      {!isArrowIcon && (
+        <div
+          className={[
+            styles.contentWrapper,
+            isAccrodianOpen && styles.contentOpen,
+          ]
+            .filter(Boolean)
+            .join(" ")}>
+          <div className={styles.content}>{children}</div>
+        </div>
+      )}
     </div>
   );
 };
