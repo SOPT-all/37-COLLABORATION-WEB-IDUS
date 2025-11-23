@@ -8,12 +8,12 @@ export const container = style({
   gap: "0.4rem",
   alignItems: "center",
   borderRadius: "20px",
-  border: `1px solid ${color.gray[200]}`, // 배경과 구분을 위해 임시로 넣어둠
   backgroundColor: "transparent",
   cursor: "pointer",
   userSelect: "none", // 버튼 드래그 방지, 더블클릭 시 텍스트 파란색으로 하이라이트 방지
   whiteSpace: "nowrap",
   transition: "all 0.2s ease",
+  boxShadow: "0px 4px 4px 0px rgba(18, 18, 18, 0.04)",
 
   ":active": {
     backgroundColor: color.white[300],
