@@ -1,5 +1,5 @@
-import { ChevronRightSharp } from "@/assets/svg";
 import * as styles from "./maker-info.css";
+import { ChevronRightSharp } from "@/assets/svg";
 import MakerProfileImage from "@/assets/img/maker-profile.png";
 
 interface MakerInfoProps {

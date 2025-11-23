@@ -1,6 +1,6 @@
+import { style } from "@vanilla-extract/css";
 import { color } from "@/shared/styles/tokens/color.css";
 import { typographyVars } from "@/shared/styles/typography.css";
-import { style } from "@vanilla-extract/css";
 
 export const container = style({
   display: "flex",
