@@ -21,7 +21,7 @@ export const MakerAccordion = ({
   const isExpandable = iconType === "chevron";
   const hasBorder = iconType === "arrow";
 
-  const renderIcon = (isOpen: boolean) => {
+  const renderMakerRightArea = (isOpen: boolean) => {
     if (iconType === "arrow") {
       return <ArrowRight />;
     }
@@ -41,8 +41,7 @@ export const MakerAccordion = ({
     <BaseAccordion
       title={title}
       isExpandable={isExpandable}
-      iconSize={24}
-      renderIcon={renderIcon}
+      renderMakerRightArea={renderMakerRightArea}
       onClick={onClick}
       styleType="maker"
       hasBorder={hasBorder}>

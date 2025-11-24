@@ -15,7 +15,7 @@ export const BottomSheetAccordion = ({
   onClick,
   children,
 }: BottomSheetAccordionProps) => {
-  const renderHeader = () => (
+  const renderBottomSheetOption = () => (
     <span className={styles.bottomSheetsOption}>
       선택 |<span className={styles.selectedValue}>{selectedOption}</span>
     </span>
@@ -24,8 +24,7 @@ export const BottomSheetAccordion = ({
   return (
     <BaseAccordion
       title={title}
-      iconSize={20}
-      renderHeader={renderHeader}
+      renderBottomSheetOption={renderBottomSheetOption}
       onClick={onClick}
       styleType="bottom-sheets">
       {children}

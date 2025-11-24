@@ -1,14 +1,13 @@
 import * as styles from "./base-accordian.css";
 import { useState } from "react";
 import type { ReactNode } from "react";
-import { ArrowRight, ChevronDown } from "@/assets/svg";
+import { ChevronDown } from "@/assets/svg";
 
 interface BaseAccordionProps {
   title: string;
   isExpandable?: boolean;
-  iconSize?: number;
-  renderHeader?: () => ReactNode;
-  renderIcon?: (_isOpen: boolean) => ReactNode;
+  renderBottomSheetOption?: () => ReactNode;
+  renderMakerRightArea?: (_isOpen: boolean) => ReactNode;
   onClick?: () => void;
   children?: ReactNode;
   styleType: "maker" | "bottom-sheets";
@@ -18,29 +17,27 @@ interface BaseAccordionProps {
 export const BaseAccordion = ({
   title,
   isExpandable = true,
-  iconSize = 20,
-  renderHeader,
-  renderIcon,
+  renderBottomSheetOption,
+  renderMakerRightArea,
   onClick,
   children,
   styleType,
   hasBorder = false,
 }: BaseAccordionProps) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const isMaker = styleType == "maker";
+  const [isAccrodianOpen, setIsAccrodianOpen] = useState(false);
 
   const handleAccrodianClick = () => {
     if (isExpandable) {
-      setIsOpen((prev) => !prev);
+      setIsAccrodianOpen((prev) => !prev);
     }
     onClick?.();
   };
 
-  const defaultIcon = isExpandable ? (
-    <span className={styles.toggleIcon({ isAccrodianOpen: isOpen })}>
-      <ChevronDown width={iconSize} height={iconSize} />
+  const defaultRightIcon = (
+    <span className={styles.toggleIcon({ isAccrodianOpen: isAccrodianOpen })}>
+      <ChevronDown width={isMaker ? 24 : 20} height={isMaker ? 24 : 20} />
     </span>
-  ) : (
-    <ArrowRight />
   );
 
   return (
@@ -48,14 +45,19 @@ export const BaseAccordion = ({
       <div className={styles.accordion} onClick={handleAccrodianClick}>
         <div className={styles.titleWrapper}>
           <span className={styles.title({ type: styleType })}>{title}</span>
-          {renderHeader?.()}
+          {renderBottomSheetOption?.()}
         </div>
         <div className={styles.optionIconWrapper}>
-          {renderIcon ? renderIcon(isOpen) : defaultIcon}
+          {renderMakerRightArea
+            ? renderMakerRightArea(isAccrodianOpen)
+            : defaultRightIcon}
         </div>
       </div>
       {isExpandable && (
-        <div className={styles.contentWrapper({ isAccrodianOpen: isOpen })}>
+        <div
+          className={styles.contentWrapper({
+            isAccrodianOpen: isAccrodianOpen,
+          })}>
           <div className={styles.content}>{children}</div>
         </div>
       )}
