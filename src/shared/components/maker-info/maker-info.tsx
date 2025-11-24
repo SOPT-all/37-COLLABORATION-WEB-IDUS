@@ -1,6 +1,7 @@
 import * as styles from "./maker-info.css";
 import { ChevronRightSharp } from "@/assets/svg";
 import MakerProfileImage from "@/assets/img/maker-profile.png";
+import { LikeButton } from "../like-button/like-button";
 
 interface MakerInfoProps {
   name: string;
@@ -30,7 +31,7 @@ export function MakerInfo({
 
         <p className={styles.description}>{description}</p>
       </div>
-      <div className={styles.heartIcon}>하트 아이콘 자리</div>
+      <LikeButton variant="maker" liked={true} count={9999} />
     </div>
   );
 }

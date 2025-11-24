@@ -29,10 +29,3 @@ export const description = style({
   ...typographyVars.caption2,
   color: color.gray[100],
 });
-
-export const heartIcon = style({
-  width: "4.8rem",
-  height: "4.8rem",
-  border: "1px solid black",
-  marginLeft: "1.2rem",
-});
