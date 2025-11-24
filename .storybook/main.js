@@ -1,8 +1,7 @@
-import type { StorybookConfig } from "@storybook/react-vite";
 import { mergeConfig } from "vite";
 import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin";
 
-const config: StorybookConfig = {
+const config = {
   // 스토리 파일의 위치를 지정하는 배열
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
   // Storybook에 추가할 애드온 목록
