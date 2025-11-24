@@ -8,7 +8,12 @@ export interface ReviewCardProps {
   content: string; // 후기 내용
 }
 
-export const ReviewCard = (props: ReviewCardProps) => {
+export const ReviewCard = ({
+  nickname,
+  rating,
+  createdDate,
+  content,
+}: ReviewCardProps) => {
   return (
     // 후기 카드 전체
     <article className={styles.reviewCard}>
@@ -18,21 +23,21 @@ export const ReviewCard = (props: ReviewCardProps) => {
 
         {/* 오른쪽: 닉네임 + (작성일 / 별점) */}
         <div>
-          <p className={styles.reviewNickname}>{props.nickname}</p>
+          <p className={styles.reviewNickname}>{nickname}</p>
           <div className={styles.reviewMeta}>
-            <span>{props.createdDate}</span>
+            <span>{createdDate}</span>
             <span className={styles.reviewRating}>
               <span className={styles.reviewStarWrapper}>
                 <Star />
               </span>
-              {props.rating.toFixed(1)}
+              {rating.toFixed(1)}
             </span>
           </div>
         </div>
       </div>
 
       {/* 본문: 후기 내용 */}
-      <p className={styles.reviewContent}>{props.content}</p>
+      <p className={styles.reviewContent}>{content}</p>
     </article>
   );
 };
