@@ -1,8 +1,12 @@
-import { RouterProvider } from "react-router";
-import { router } from "@/routes/router";
+import { ProductSummary } from "./pages/home/components/product-summary/product-summary";
+import * as styles from "./test.css";
 
-const App = () => {
-  return <RouterProvider router={router} />;
-};
+function App() {
+  return (
+    <div className={styles.test}>
+      <ProductSummary />
+    </div>
+  );
+}
 
 export default App;
