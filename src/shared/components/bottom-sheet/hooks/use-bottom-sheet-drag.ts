@@ -12,8 +12,8 @@ const RETURN_TRANSITION_DURATION = 300; // sheet 원위치 복귀 시 transition
 export const useBottomSheetDrag = ({ onClose }: UseBottomSheetDragProps) => {
   const sheetRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-  const [startY, setStartY] = useState(0); // 드래그를 시작한 y좌표
-  const [sheetDragStartY, setSheetDragStartY] = useState<number | null>(null); // sheet을 내리기 시작한 y좌표
+const [touchStartY, setTouchStartY] = useState(0);  // 방향 판단 용
+const [sheetStartY, setSheetStartY] = useState<number | null>(null); // sheet transform 기준점
   const [dragDistance, setDragDistance] = useState(0); // sheet이 내려간 거리
   const [isDragging, setIsDragging] = useState(false);
 
