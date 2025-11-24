@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import * as styles from "./accrodian.css";
+import * as styles from "./accordian.css";
 import { ArrowRight, ChevronDown } from "@/assets/svg";
 
 interface AccrodianProps {

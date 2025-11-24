@@ -1,6 +1,6 @@
 import * as styles from "./test.css";
 
-import { Accrodian } from "./shared/components/accordian/accrodian";
+import { Accrodian } from "./shared/components/accordian/accordian";
 
 function App() {
   return (
