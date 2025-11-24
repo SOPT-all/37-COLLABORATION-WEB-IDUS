@@ -41,7 +41,7 @@ export const backdrop = style({
 // 실제 바텀시트(흰색 박스))
 export const sheet = style({
   position: "relative", // overlay 기준으로 상대적인 위치 설정
-  width: "100%",
+  width: "37.5rem",
   maxHeight: "90dvh", //
   backgroundColor: color.white[100],
   borderTopLeftRadius: "16px",
