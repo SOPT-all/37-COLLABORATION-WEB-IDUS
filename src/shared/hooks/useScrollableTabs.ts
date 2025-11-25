@@ -1,16 +1,16 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type RefObject } from "react";
 
 const HEADER_HEIGHT = 56;
 const TAB_BAR_HEIGHT = 46;
+
+export type TabType = "product-info" | "review" | "recommend";
 
 export function useScrollableTabs() {
   const productInfoRef = useRef<HTMLDivElement>(null);
   const reviewRef = useRef<HTMLDivElement>(null);
   const recommendRef = useRef<HTMLDivElement>(null);
 
-  const [activeTab, setActiveTab] = useState<
-    "product-info" | "review" | "recommend"
-  >("product-info");
+  const [activeTab, setActiveTab] = useState<TabType>("product-info");
 
   // IntersectionObserver로 현재 섹션 감지
   useEffect(() => {
@@ -23,11 +23,9 @@ export function useScrollableTabs() {
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          const sectionId = entry.target.getAttribute("data-section") as
-            | "product-info"
-            | "review"
-            | "recommend";
-
+          const sectionId = entry.target.getAttribute(
+            "data-section"
+          ) as TabType;
           if (sectionId) {
             setActiveTab(sectionId);
           }
@@ -52,7 +50,7 @@ export function useScrollableTabs() {
 
   // 탭 클릭 시 해당 섹션으로 스크롤
   const handleTabClick = (tab: "product-info" | "review" | "recommend") => {
-    const sectionRefMap = {
+    const sectionRefMap: Record<TabType, RefObject<HTMLDivElement | null>> = {
       "product-info": productInfoRef,
       review: reviewRef,
       recommend: recommendRef,
