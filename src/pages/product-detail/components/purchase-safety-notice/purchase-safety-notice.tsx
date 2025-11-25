@@ -1,4 +1,4 @@
-import * as styles from "../product-detail.css";
+import * as styles from "./purchase-safety-notice.css";
 
 export const PurchaseSafetyNotice = () => {
   return (
@@ -10,7 +10,13 @@ export const PurchaseSafetyNotice = () => {
       <div className={styles.noticeDescription}>
         개인 연락처를 통한 거래는 보호 및 중재가 어려울 수 있습니다. {"\n"}
         작가님의 외부 거래 요청이 있다면{" "}
-        <span className={styles.customerCenter}>고객센터</span>로 알려주세요.
+        <a
+          href="#"
+          onClick={(e) => e.preventDefault()}
+          className={styles.customerCenter}>
+          고객센터
+        </a>
+        로 알려주세요.
       </div>
     </div>
   );

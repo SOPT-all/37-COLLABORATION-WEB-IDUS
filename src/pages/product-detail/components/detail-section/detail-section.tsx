@@ -1,4 +1,4 @@
-import * as styles from "../product-detail.css";
+import * as styles from "./detail-section.css";
 import { useState } from "react";
 import LargeButton from "@/shared/components/button/large-button/large-button";
 import { LARGE_BUTTON_VARIANTS } from "@/shared/constants/button";

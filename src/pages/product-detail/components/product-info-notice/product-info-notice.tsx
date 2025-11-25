@@ -1,5 +1,5 @@
 import { MakerAccordion } from "@/shared/components/accordian/maker-accordian";
-import * as styles from "../product-detail.css";
+import * as styles from "./product-info-notice.css";
 
 interface AccordionItem {
   id: string;
