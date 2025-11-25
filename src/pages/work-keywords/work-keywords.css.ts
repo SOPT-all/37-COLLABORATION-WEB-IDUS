@@ -2,7 +2,7 @@ import { style } from "@vanilla-extract/css";
 import { components } from "@/shared/styles/layer.css";
 
 import { color } from "@/shared/styles/tokens/color.css";
-import { typographyStyle } from "@/shared/styles/typography.css";
+import { typographyVars } from "@/shared/styles/typography.css";
 
 // 레이아웃
 export const keywordsRoot = style({
@@ -19,7 +19,7 @@ export const keywordsRoot = style({
 export const keywordsChip = style({
   "@layer": {
     [components]: {
-      ...typographyStyle("body3"),
+      ...typographyVars.body3,
       display: "inline-flex",
       alignItems: "center",
       justifyContent: "center",
