@@ -5,11 +5,9 @@ import { style } from "@vanilla-extract/css";
 export const container = style({
   display: "flex",
   flexDirection: "column",
-  gap: "1.6rem",
 });
 
 // PurchaseSafetyNotice
-
 export const notice = style({
   padding: "1.6rem 2rem",
   backgroundColor: color.white[300],
@@ -17,6 +15,7 @@ export const notice = style({
   display: "flex",
   flexDirection: "column",
   gap: "0.8rem",
+  margin: "2.4rem 0 1.6rem 0",
 });
 
 export const noticeTitle = style({
@@ -31,18 +30,34 @@ export const noticeDescription = style({
   whiteSpace: "pre-line",
 });
 
-// ProductInfoNotice
+export const customerCenter = style({
+  textDecorationLine: "underline",
+});
 
-export const wrapper = style({
+// DetailSection
+export const imageWrapperClosed = style({
+  maxHeight: 0,
+  opacity: 0,
+  overflow: "hidden",
+  transition: "max-height 0.5s ease, opacity 0.5s ease",
+});
+
+export const imageWrapperOpen = style({
+  padding: "0.8rem 0 1.6rem 0",
+  maxHeight: "50rem",
+  opacity: 1,
+  transition: "max-height 0.5s ease, opacity 0.5s ease",
+});
+
+// ProductInfoNotice
+export const productInfo = style({
   display: "flex",
   flexDirection: "column",
   gap: "1.6rem",
-  margin: "2.4rem 0 3.8rem 0",
+  margin: "4rem 0 3.8rem 0",
 });
 
-export const infoTitle = style({
+export const productInfoTitle = style({
   ...typographyVars.heading3,
   color: color.black[100],
 });
-
-export const accordianWrapper = style({});
