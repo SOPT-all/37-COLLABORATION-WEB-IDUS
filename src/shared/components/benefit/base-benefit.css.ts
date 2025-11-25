@@ -6,8 +6,10 @@ import { recipe } from "@vanilla-extract/recipes";
 export const container = recipe({
   base: {
     display: "flex",
+    flex: "0 0 auto",
     flexDirection: "column",
     justifyContent: "space-between",
+
     width: "fit-content",
     height: "12.2rem",
     padding: "1.6rem 1.2rem",
@@ -22,7 +24,6 @@ export const container = recipe({
         backgroundColor: color.white[200],
       },
       "benefit-more": {
-        width: "7rem",
         backgroundColor: color.white[300],
       },
     },
@@ -33,24 +34,42 @@ export const benefitTitle = style({
   display: "flex",
   flexDirection: "column",
   gap: "0.2rem",
+  width: "fit-content",
 });
 
-export const benefitContent = style({
-  display: "flex",
-  gap: "0.3rem",
+export const benefitContent = recipe({
+  base: {
+    display: "flex",
+    gap: "0.3rem",
+    width: "fit-content",
+  },
+  variants: {
+    type: {
+      "membership-benefit": {
+        maxWidth: "15.3rem",
+      },
+      "pay-benefit": {
+        maxWidth: "8.9rem",
+      },
+      "benefit-more": {
+        maxWidth: "4.6rem",
+      },
+    },
+  },
 });
 
 export const benefitBadge = style({
-  backgroundColor: color.brand[200],
   padding: "0.4rem 0.6rem",
   borderRadius: "0.2rem",
+  backgroundColor: color.brand[200],
 });
 
+// 공통되는 텍스트 스타일
 export const text = recipe({
   base: {
     ...typographyVars.body3,
     color: color.black[100],
-    whiteSpace: "wrap",
+    whiteSpace: "pre-line",
   },
   variants: {
     type: {
