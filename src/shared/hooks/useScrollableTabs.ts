@@ -60,7 +60,10 @@ export function useScrollableTabs() {
 
     if (targetRef.current) {
       const offsetTop =
-        targetRef.current.offsetTop - HEADER_HEIGHT - TAB_BAR_HEIGHT;
+        targetRef.current.getBoundingClientRect().top +
+        window.scrollY -
+        HEADER_HEIGHT -
+        TAB_BAR_HEIGHT;
 
       window.scrollTo({
         top: offsetTop,
