@@ -6,6 +6,7 @@ export const container = style({
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
+  padding: "2rem 1.6rem 1.6rem 1.6rem",
 });
 
 export const profileInfoArea = style({
