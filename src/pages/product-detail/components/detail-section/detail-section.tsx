@@ -18,10 +18,7 @@ export const DetailSection = () => {
   };
   return (
     <>
-      <div
-        className={
-          isDetailOpen ? styles.imageWrapperOpen : styles.imageWrapperClosed
-        }>
+      <div className={styles.imageWrapper({ isDetailOpen })}>
         <img src={ProductDetailImage} alt="작품 세부 이미지" />
       </div>
 
