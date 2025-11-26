@@ -8,6 +8,7 @@ export const layout = style({
   right: 0,
   margin: "0 auto",
   maxWidth: "375px",
+  zIndex: 100,
 });
 
 export const container = style({

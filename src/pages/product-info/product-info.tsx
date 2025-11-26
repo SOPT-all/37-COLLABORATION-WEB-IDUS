@@ -1,3 +1,4 @@
+import * as styles from "./product-info.css";
 import { MakerInfo } from "@/shared/components/maker-info/maker-info";
 import { Carousel } from "./components/carousel/carousel";
 import { ProductMainInfo } from "./components/product-main-info/product-main-info";
@@ -15,7 +16,7 @@ export const ProductInfo = () => {
     salesCount: 4319,
   };
   return (
-    <>
+    <div className={styles.container}>
       {/** 캐러셀 */}
       <Carousel />
       {/** 작품 메인 정보 */}
@@ -27,6 +28,6 @@ export const ProductInfo = () => {
         name="SPEDEAR"
         description="소중한 시간을 담을 수 있는 아이템입니다."
       />
-    </>
+    </div>
   );
 };

@@ -1,9 +1,10 @@
 import { lazy } from "react";
 import LazySection from "@/shared/components/lazy-section/lazy-section";
-import ProductInfo from "./components/product-info";
+
 import LoadingFallback from "@/shared/components/layout/loading-fallback";
 import { TabBar } from "@/shared/components/tab-bar/tab-bar";
 import { useScrollableTabs } from "@/shared/hooks/useScrollableTabs";
+import { ProductInfo } from "../product-info/product-info";
 
 // Code splitting: 각 컴포넌트를 별도 chunk로 분리
 const ProductDetail = lazy(
