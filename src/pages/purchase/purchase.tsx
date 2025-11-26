@@ -2,36 +2,78 @@ import { ArrowRight } from "@/assets/svg";
 import * as styles from "./purchase.css";
 import { BaseAccordion } from "@/shared/components/accordian/base-accordion";
 import TitleOption from "@/pages/purchase/components/title-option";
+import { useState } from "react";
+
+const TITLE_OPTIONS = [
+  {
+    id: "album-only",
+    title: "앨범 제목만",
+    label: "앨범 제목",
+    placeholder: "앨범 제목을 입력해주세요",
+  },
+  {
+    id: "title-message",
+    title: "제목 + 메시지",
+    label: "앨범 제목",
+    placeholder: "앨범 제목을 입력해주세요",
+  },
+];
 
 const CUSTOM_OPTIONS = [
   {
     id: 1,
     title: "재생 시간 선택",
-    selectedOption: "기본 60초",
+    defaultOption: "기본 60초",
   },
   {
     id: 2,
     title: "카세트 외관",
-    selectedOption: "핑크",
+    defaultOption: "핑크",
   },
   {
     id: 3,
     title: "표지 외관",
-    selectedOption: "핑크",
+    defaultOption: "핑크",
   },
   {
     id: 4,
     title: "제목 설정",
-    selectedOption: "앨범 제목만",
+    defaultOption: "앨범 제목만",
   },
   {
     id: 5,
     title: "제품 포장",
-    selectedOption: "기본 60초",
+    defaultOption: "기본 60초",
   },
 ];
 
 const Purchase = () => {
+  // 각 TitleOption 그룹에서 선택된 옵션 ID를 저장
+  const [selectedTitleOptionId, setSelectedTitleOptionId] = useState<
+    string | null
+  >(null);
+  // 각 CUSTOM_OPTIONS에서 선택된 값을 저장
+  const [selectedOptions, setSelectedOptions] = useState<
+    Record<number, string>
+  >({});
+
+  const handleTitleOptionSelect = (
+    optionId: number,
+    titleOptionId: string,
+    titleOptionTitle: string
+  ) => {
+    // 같은 옵션을 다시 클릭하면 닫기
+    if (selectedTitleOptionId === titleOptionId) {
+      setSelectedTitleOptionId(null);
+    } else {
+      setSelectedTitleOptionId(titleOptionId);
+      setSelectedOptions((prev) => ({
+        ...prev,
+        [optionId]: titleOptionTitle,
+      }));
+    }
+  };
+
   return (
     <section className={styles.container}>
       {/* 배송 출발일 지정 컴포넌트(별도구현) */}
@@ -58,24 +100,28 @@ const Purchase = () => {
               <div>
                 <span className={styles.optionType}>선택 |</span>
                 <span className={styles.optionDetail}>
-                  {option.selectedOption}
+                  {selectedOptions[option.id] ?? option.defaultOption}
                 </span>
               </div>
             )}>
-            {
-              <div className={styles.customListDetailContainer}>
+            <div className={styles.customListDetailContainer}>
+              {TITLE_OPTIONS.map((titleOption) => (
                 <TitleOption
-                  title="앨범 제목만"
-                  label="앨범 제목"
-                  placeholder="앨범 제목을 입력해주세요"
+                  key={titleOption.id}
+                  title={titleOption.title}
+                  label={titleOption.label}
+                  placeholder={titleOption.placeholder}
+                  isExpanded={selectedTitleOptionId === titleOption.id}
+                  onSelect={() =>
+                    handleTitleOptionSelect(
+                      option.id,
+                      titleOption.id,
+                      titleOption.title
+                    )
+                  }
                 />
-                <TitleOption
-                  title="제목 + 메시지"
-                  label="앨범 제목"
-                  placeholder="앨범 제목을 입력해주세요"
-                />
-              </div>
-            }
+              ))}
+            </div>
           </BaseAccordion>
         ))}
       </div>

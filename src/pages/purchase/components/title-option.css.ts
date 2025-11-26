@@ -3,14 +3,25 @@ import { color } from "@/shared/styles/tokens/color.css";
 import { typographyVars } from "@/shared/styles/typography.css";
 import { recipe } from "@vanilla-extract/recipes";
 
-export const container = style({
-  display: "flex",
-  flexDirection: "column",
-  gap: "1.6rem",
-  width: "100%",
-  padding: "1.2rem 1.6rem",
-  borderRadius: "8px",
-  backgroundColor: color.white[200],
+export const container = recipe({
+  base: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "1.6rem",
+    width: "100%",
+    padding: "1.2rem 1.6rem",
+    borderRadius: "8px",
+  },
+  variants: {
+    isExpanded: {
+      true: {
+        backgroundColor: color.white[300],
+      },
+      false: {
+        backgroundColor: color.white[200],
+      },
+    },
+  },
 });
 
 // '앨범 제목만', '제목 + 메시지'
