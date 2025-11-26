@@ -23,8 +23,8 @@ export const ReviewSummary = ({
     <section className={styles.container}>
       {/* 1. 제목 영역 + 별점 / 후기 개수 */}
       <header className={styles.header}>
-        <p className={styles.caption}>후기 요약</p>
-        <h2 className={styles.title}>
+        <p className={styles.headerText({ type: "caption" })}>후기 요약</p>
+        <h2 className={styles.headerText({ type: "title" })}>
           실제 후기
           <br />
           한눈에 보기

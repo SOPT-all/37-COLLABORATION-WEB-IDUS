@@ -2,6 +2,7 @@ import { style } from "@vanilla-extract/css";
 import { components } from "@/shared/styles/layer.css";
 import { color } from "@/shared/styles/tokens/color.css";
 import { typographyVars } from "@/shared/styles/typography.css";
+import { recipe } from "@vanilla-extract/recipes";
 
 // 전체 섹션 박스
 export const container = style({
@@ -22,25 +23,26 @@ export const header = style({
   },
 });
 
-// 후기 요약
-export const caption = style({
-  "@layer": {
-    [components]: {
-      ...typographyVars.body3,
-      color: color.gray[100],
-      marginBottom: "0.8rem",
+export const headerText = recipe({
+  base: {
+    "@layer": {
+      [components]: {
+        textAlign: "center", // 공통 속성
+      },
     },
   },
-});
-
-// 실제 후기 한눈에 보기
-export const title = style({
-  "@layer": {
-    [components]: {
-      ...typographyVars.heading2,
-      color: color.black[100],
-      margin: 0,
-      marginBottom: "1.6rem",
+  variants: {
+    type: {
+      caption: {
+        ...typographyVars.body3,
+        color: color.gray[100],
+        marginBottom: "0.8rem",
+      },
+      title: {
+        ...typographyVars.heading2,
+        color: color.black[100],
+        marginBottom: "1.6rem",
+      },
     },
   },
 });
@@ -63,7 +65,6 @@ export const scoreValue = style({
     [components]: {
       ...typographyVars.display,
       color: color.black[100],
-      margin: 0,
     },
   },
 });
@@ -96,7 +97,6 @@ export const starIcon = style({
     [components]: {
       width: "2.4rem",
       height: "2.4rem",
-      boxSizing: "border-box",
       display: "inline-flex",
       alignItems: "center",
       justifyContent: "center",
@@ -114,7 +114,6 @@ export const reviewCountText = style({
     [components]: {
       ...typographyVars.caption1,
       color: color.gray[100],
-      margin: 0,
       display: "flex",
       alignItems: "baseline",
     },
@@ -155,7 +154,6 @@ export const aiLabel = style({
   "@layer": {
     [components]: {
       ...typographyVars.body3,
-      margin: 0,
     },
   },
 });
@@ -165,7 +163,6 @@ export const aiDescription = style({
     [components]: {
       ...typographyVars.caption2,
       color: color.gray[100],
-      margin: 0,
     },
   },
 });
@@ -203,8 +200,7 @@ export const thumbnailGrid = style({
     [components]: {
       display: "grid",
       gridTemplateColumns: "repeat(3, 1fr)",
-      columnGap: "0.4rem",
-      rowGap: "0.4rem",
+      gap: "0.4rem",
     },
   },
 });
@@ -215,7 +211,7 @@ export const thumbnail = style({
     [components]: {
       width: "100%",
       aspectRatio: "1 / 1", // 정사각형
-      borderRadius: "0.3rem",
+      borderRadius: "3px",
       overflow: "hidden",
       position: "relative",
     },
@@ -243,7 +239,7 @@ export const thumbnailOverlay = style({
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      borderRadius: "0.3rem",
+      borderRadius: "3px",
       cursor: "pointer",
     },
   },
