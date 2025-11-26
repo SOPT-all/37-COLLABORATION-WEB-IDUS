@@ -48,3 +48,9 @@ export const titleText = recipe({
     },
   },
 });
+
+export const fieldsContainer = style({
+  display: "flex",
+  flexDirection: "column",
+  gap: "1.26em",
+});

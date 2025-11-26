@@ -8,14 +8,15 @@ const TITLE_OPTIONS = [
   {
     id: "album-only",
     title: "앨범 제목만",
-    label: "앨범 제목",
-    placeholder: "앨범 제목을 입력해주세요",
+    fields: [{ label: "앨범 제목", placeholder: "앨범 제목을 입력해주세요" }],
   },
   {
     id: "title-message",
     title: "제목 + 메시지",
-    label: "앨범 제목",
-    placeholder: "앨범 제목을 입력해주세요",
+    fields: [
+      { label: "앨범 제목", placeholder: "앨범 제목을 입력해주세요" },
+      { label: "메시지 추가", placeholder: "메시지를 입력해주세요" },
+    ],
   },
 ];
 
@@ -109,8 +110,7 @@ const Purchase = () => {
                 <TitleOption
                   key={titleOption.id}
                   title={titleOption.title}
-                  label={titleOption.label}
-                  placeholder={titleOption.placeholder}
+                  fields={titleOption.fields}
                   isExpanded={selectedTitleOptionId === titleOption.id}
                   onSelect={() =>
                     handleTitleOptionSelect(
