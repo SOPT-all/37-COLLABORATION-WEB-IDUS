@@ -5,5 +5,5 @@ export const container = style({
   flexDirection: "column",
   gap: "1rem",
 
-  padding: "0 1rem",
+  padding: "2.4rem 1rem",
 });
