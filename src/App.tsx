@@ -1,5 +1,7 @@
+import { RelatedProduct } from "@pages/related-product/related-product";
+
 function App() {
-  return <div />;
+  return <RelatedProduct />;
 }
 
 export default App;
