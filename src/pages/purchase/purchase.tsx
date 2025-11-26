@@ -1,6 +1,7 @@
 import { ArrowRight } from "@/assets/svg";
 import * as styles from "./purchase.css";
 import { BaseAccordion } from "@/shared/components/accordian/base-accordion";
+import TitleOption from "@/pages/purchase/components/title-option";
 
 const CUSTOM_OPTIONS = [
   {
@@ -61,7 +62,20 @@ const Purchase = () => {
                 </span>
               </div>
             )}>
-            {/* 아코디언 펼쳤을 때 나올 옵션들 */}
+            {
+              <div className={styles.customListDetailContainer}>
+                <TitleOption
+                  title="앨범 제목만"
+                  label="앨범 제목"
+                  placeholder="앨범 제목을 입력해주세요"
+                />
+                <TitleOption
+                  title="제목 + 메시지"
+                  label="앨범 제목"
+                  placeholder="앨범 제목을 입력해주세요"
+                />
+              </div>
+            }
           </BaseAccordion>
         ))}
       </div>

@@ -58,3 +58,10 @@ export const optionDetail = style({
   color: color.gray[100],
   marginLeft: "0.4rem",
 });
+
+export const customListDetailContainer = style({
+  display: "flex",
+  flexDirection: "column",
+  marginBottom: "1.6rem",
+  gap: "0.4rem",
+});
