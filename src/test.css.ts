@@ -1,12 +1,15 @@
 import { style } from "@vanilla-extract/css";
 
 export const test = style({
+  width: "100%",
+  padding: "1rem",
   display: "flex",
-  flexDirection: "column",
-  gap: "10px",
-  padding: "1.6rem",
-});
+  gap: "0.6rem",
+  overflowX: "auto",
 
-export const bigElement = style({
-  height: "120vh",
+  selectors: {
+    "&::-webkit-scrollbar": {
+      display: "none",
+    },
+  },
 });
