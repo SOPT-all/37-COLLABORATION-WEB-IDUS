@@ -2,7 +2,7 @@ import * as styles from "./maker-info.css";
 import { ChevronRightSharp } from "@/assets/svg";
 import MakerProfileImage from "@/assets/img/maker-profile.png";
 import { LikeButton } from "../like-button/like-button";
-import { useAuthorLikeMutation } from "@/apis/queries/use-author-like.query.";
+import { useAuthorLikeMutation } from "@/apis/mutations/use-author-like.mutation";
 
 interface MakerInfoProps {
   name: string;
@@ -39,10 +39,10 @@ export function MakerInfo({
         </div>
       </div>
 
-      <LikeButton 
-        variant="maker" 
-        liked={liked} 
-        count={likeCount} 
+      <LikeButton
+        variant="maker"
+        liked={liked}
+        count={likeCount}
         onClick={() => toggleLike({ authorId: 1, userId: 1 })}
       />
     </div>

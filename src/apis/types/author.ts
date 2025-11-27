@@ -7,6 +7,9 @@ export interface AuthorLikeRequest {
 }
 
 // 작가 좋아요 응답
+export interface AuthorLikeResponse {
+  likeCount: number;
+}
 
 export interface AuthorInfoResponse {
   id: number;
