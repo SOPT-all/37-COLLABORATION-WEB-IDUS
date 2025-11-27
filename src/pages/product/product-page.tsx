@@ -1,4 +1,4 @@
-import { lazy } from "react";
+import { lazy, Suspense } from "react";
 import LazySection from "@/shared/components/lazy-section/lazy-section";
 import ProductInfo from "./components/product-info";
 import LoadingFallback from "@/shared/components/layout/loading-fallback";
@@ -12,7 +12,9 @@ const ProductPage = () => {
   return (
     <div>
       {/* ProductInfo는 첫 진입 시 바로 로드 */}
-      <ProductInfo />
+      <Suspense fallback={<LoadingFallback />}>
+        <ProductInfo />
+      </Suspense>
 
       {/* 나머지 컴포넌트들은 스크롤해서 화면에 보이면 로드 */}
       <LazySection fallback={<LoadingFallback />}>

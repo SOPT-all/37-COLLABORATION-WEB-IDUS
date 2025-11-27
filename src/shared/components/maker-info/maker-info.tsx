@@ -8,12 +8,16 @@ interface MakerInfoProps {
   name: string;
   description: string;
   profileImage?: string;
+  liked?: boolean;
+  likeCount?: number;
 }
 
 export function MakerInfo({
   name,
   description,
   profileImage = MakerProfileImage,
+  liked = false,
+  likeCount = 0,
 }: MakerInfoProps) {
   const { mutate: toggleLike } = useAuthorLikeMutation();
 
@@ -35,10 +39,10 @@ export function MakerInfo({
         </div>
       </div>
 
-      <LikeButton
-        variant="maker"
-        liked={true}
-        count={9999}
+      <LikeButton 
+        variant="maker" 
+        liked={liked} 
+        count={likeCount} 
         onClick={() => toggleLike({ authorId: 1, userId: 1 })}
       />
     </div>

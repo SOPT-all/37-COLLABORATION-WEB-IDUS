@@ -1,12 +1,7 @@
-import { ProductInfo } from "./pages/product-info/product-info";
-import * as styles from "./test.css";
+﻿import Footer from "@/shared/components/footer/footer";
 
 function App() {
-  return (
-    <div className={styles.test}>
-      <ProductInfo />
-    </div>
-  );
+  return <Footer />;
 }
 
 export default App;

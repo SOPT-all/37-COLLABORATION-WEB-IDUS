@@ -22,3 +22,13 @@ globalStyle("html, body, #root", {
 globalStyle("*", {
   WebkitTapHighlightColor: "transparent", // 탭 하이라이트 제거
 });
+
+// 전역 스크롤바 숨김
+globalStyle("*", {
+  scrollbarWidth: "none",
+  msOverflowStyle: "none",
+});
+
+globalStyle("html::-webkit-scrollbar, body::-webkit-scrollbar", {
+  display: "none",
+});

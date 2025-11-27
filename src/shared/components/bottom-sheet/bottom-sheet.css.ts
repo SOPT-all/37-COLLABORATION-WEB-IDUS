@@ -50,6 +50,7 @@ export const sheet = style({
   flexDirection: "column",
   zIndex: 1001, // TODO: zIndex 토큰화
   animation: `${slideUp} 0.3s ease-out`,
+  gap: "0.4rem",
 });
 
 export const content = style({

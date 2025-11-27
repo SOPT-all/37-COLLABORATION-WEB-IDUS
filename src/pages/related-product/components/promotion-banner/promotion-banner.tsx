@@ -1,6 +1,6 @@
 import * as styles from "./promotion-banner.css";
 import PromotionBannerImage from "@/assets/img/promotion-banner.png";
-import { promotionBanners } from "./relation-product.mock";
+import { promotionBanners } from "../../constants/promotion-banner.mock";
 
 export const PromotionBanner = () => {
   return (
