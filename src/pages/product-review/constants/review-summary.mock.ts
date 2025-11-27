@@ -1,7 +1,7 @@
 import Product01 from "@/assets/img/product-01.png";
 
 export const DUMMY_AVERAGE_SCORE = 4.8;
-export const DUMMY_REVIEW_COUNT = 634;
+export const DUMMY_REVIEW_COUNT = 10;
 export const DUMMY_THUMBNAILS: { reviewId: number; imageUrl: string }[] =
   Array.from({ length: 6 }, (_, index) => ({
     reviewId: index + 1,

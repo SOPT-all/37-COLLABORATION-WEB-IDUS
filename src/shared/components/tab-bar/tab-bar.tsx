@@ -8,7 +8,7 @@ interface TabBarProps {
 export const TabBar = ({ activeTab, onTabClick }: TabBarProps) => {
   const tabs = [
     { id: "product-info" as const, label: "작품 정보" },
-    { id: "review" as const, label: "후기 634" },
+    { id: "review" as const, label: "후기 10" },
     { id: "related" as const, label: "추천" },
   ];
 

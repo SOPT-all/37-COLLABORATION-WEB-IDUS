@@ -15,7 +15,7 @@ export const ProductInfo = () => {
     discountRate: 26,
     discountedPrice: 11665,
     averageScore: 4.8,
-    reviewCount: 634,
+    reviewCount: 10,
     salesCount: 4319,
   };
   const { data: productInfo } = useProductInfo({ userId: 1, productId: 1 });
