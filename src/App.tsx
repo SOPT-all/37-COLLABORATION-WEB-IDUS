@@ -1,10 +1,10 @@
-import { ProductInfo } from "./pages/product-info/product-info";
+import { ProductReview } from "./pages/product-review/product-review";
 import * as styles from "./test.css";
 
 function App() {
   return (
     <div className={styles.test}>
-      <ProductInfo />
+      <ProductReview />
     </div>
   );
 }

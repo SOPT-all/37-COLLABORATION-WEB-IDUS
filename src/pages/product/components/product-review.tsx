@@ -2,7 +2,7 @@ const ProductReview = () => {
   return (
     <section
       style={{
-        border: `1px solid green`,
+        border: "1px solid green",
         padding: "2rem",
       }}>
       <h2>후기 및 댓글</h2>
@@ -27,7 +27,7 @@ const ProductReview = () => {
           <p>
             <strong>사용자2</strong>
           </p>
-          <p>휼륭해요</p>
+          <p>훌륭해요</p>
         </div>
         <div style={{ padding: "1rem", border: "1px solid #ddd" }}>
           <p>
