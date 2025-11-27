@@ -5,7 +5,7 @@ import { ProductSummary } from "./components/product-summary/product-summary";
 import { useProductInfo } from "@/apis/queries/use-product-info.query";
 
 export const ProductInfo = () => {
-  const { data: productInfo } = useProductInfo({ userId: 0, productId: 1 });
+  const { data: productInfo } = useProductInfo({ userId: 1, productId: 1 });
   return (
     <>
       {/** 캐러셀 */}
