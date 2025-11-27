@@ -4,6 +4,26 @@ import { components } from "@/shared/styles/layer.css";
 import { color } from "@/shared/styles/tokens/color.css";
 import { typographyVars } from "@/shared/styles/typography.css";
 
+export const keywordsSection = style({
+  "@layer": {
+    [components]: {
+      display: "flex",
+      flexDirection: "column",
+      rowGap: "1.6rem",
+      marginTop: "3.6rem",
+      padding: "0rem 1.6rem",
+    },
+  },
+});
+
+export const keywordsTitle = style({
+  "@layer": {
+    [components]: {
+      ...typographyVars.heading3,
+    },
+  },
+});
+
 // 레이아웃
 export const keywordsRoot = style({
   "@layer": {
