@@ -7,12 +7,16 @@ interface MakerInfoProps {
   name: string;
   description: string;
   profileImage?: string;
+  liked?: boolean;
+  likeCount?: number;
 }
 
 export function MakerInfo({
   name,
   description,
   profileImage = MakerProfileImage,
+  liked = false,
+  likeCount = 0,
 }: MakerInfoProps) {
   // TODO: api 연동해서 LikeButton에 전달 => 낙관적 업데이트
 
@@ -33,7 +37,7 @@ export function MakerInfo({
           <p className={styles.description}>{description}</p>
         </div>
       </div>
-      <LikeButton variant="maker" liked={true} count={9999} />
+      <LikeButton variant="maker" liked={liked} count={likeCount} />
     </div>
   );
 }

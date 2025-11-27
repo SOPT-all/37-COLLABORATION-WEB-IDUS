@@ -1,8 +1,10 @@
+import { Suspense } from "react";
 import * as styles from "./product-info.css";
 import { MakerInfo } from "@/shared/components/maker-info/maker-info";
 import { Carousel } from "./components/carousel/carousel";
 import { ProductMainInfo } from "./components/product-main-info/product-main-info";
 import { ProductSummary } from "./components/product-summary/product-summary";
+import { useAuthorInfoQuery } from "@/apis/queries/use-author-info.query";
 
 export const ProductInfo = () => {
   const data = {
@@ -15,19 +17,43 @@ export const ProductInfo = () => {
     reviewCount: 634,
     salesCount: 4319,
   };
+
+  const authorId = 1;
+  const userId = 1;
+
+  const AuthorInfoContent = () => {
+    const { data: author } = useAuthorInfoQuery(authorId, userId);
+
+    return (
+      <MakerInfo
+        name={author?.name ?? data.authorName}
+        description={author?.description ?? "작가 정보를 불러오는 중입니다."}
+        profileImage={author?.imageUrl}
+        liked={author?.isLiked}
+        likeCount={author?.likeCount}
+      />
+    );
+  };
+
   return (
     <div className={styles.container}>
       {/** 캐러셀 */}
       <Carousel />
       {/** 작품 메인 정보 */}
-      <ProductMainInfo data={data} />
+      <ProductMainInfo data={{ ...data }} />
       {/** 작품 요약 정보 */}
       <ProductSummary />
       {/** 작가 정보 */}
-      <MakerInfo
-        name="SPEDEAR"
-        description="소중한 시간을 담을 수 있는 아이템입니다."
-      />
+      <Suspense
+        fallback={
+          <MakerInfo
+            name={data.authorName}
+            description="작가 정보를 불러오는 중입니다."
+            profileImage={undefined}
+          />
+        }>
+        <AuthorInfoContent />
+      </Suspense>
     </div>
   );
 };
