@@ -7,15 +7,28 @@ import BottomSheet from "@/shared/components/bottom-sheet/bottom-sheet";
 import useBottomSheet from "@/shared/components/bottom-sheet/hooks/use-bottom-sheet";
 import FooterDetail from "@/shared/components/footer-detail/footer-detail";
 import Purchase from "@/pages/purchase/purchase";
+import { useProductLikeMutation } from "@/apis/mutations/use-product-like.mutation";
 
 const Footer = () => {
   const [isProductLiked, setIsProductLiked] = useState(false);
   const { isOpen, open, close } = useBottomSheet();
+  const { mutate: likeProduct } = useProductLikeMutation();
+  const [likeCount, setLikeCount] = useState(0);
 
-  // 좋아요 로직은 추후 Footer에서 분리 예정
+  // TODO: 페이지 내 훅으로 이동
   const handleProductLike = () => {
-    // 임시
-    setIsProductLiked((prev) => !prev);
+    likeProduct(
+      { productId: 1, userId: 1 },
+      {
+        onSuccess: (data) => {
+          setIsProductLiked((prev) => !prev);
+          setLikeCount(data.likeCount);
+        },
+        onError: (error) => {
+          console.error("좋아요 실패:", error);
+        },
+      }
+    );
   };
 
   return (
@@ -27,7 +40,7 @@ const Footer = () => {
           <LikeButton
             variant="bottom-sheets"
             liked={isProductLiked}
-            count={0}
+            count={likeCount}
             onClick={handleProductLike}
           />
 
