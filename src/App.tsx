@@ -1,7 +1,7 @@
-﻿import RelatedProduct from "./pages/related-product/related-product";
+﻿import Footer from "@/shared/components/footer/footer";
 
 function App() {
-  return <RelatedProduct />;
+  return <Footer />;
 }
 
 export default App;

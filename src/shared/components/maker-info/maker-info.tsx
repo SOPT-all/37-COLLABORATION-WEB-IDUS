@@ -2,18 +2,22 @@ import * as styles from "./maker-info.css";
 import { ChevronRightSharp } from "@/assets/svg";
 import MakerProfileImage from "@/assets/img/maker-profile.png";
 import { LikeButton } from "../like-button/like-button";
-import { useAuthorLikeMutation } from "@/apis/queries/use-author-like.query.";
+import { useAuthorLikeMutation } from "@/apis/mutations/use-author-like.mutation";
 
 interface MakerInfoProps {
   name: string;
   description: string;
   profileImage?: string;
+  liked?: boolean;
+  likeCount?: number;
 }
 
 export function MakerInfo({
   name,
   description,
   profileImage = MakerProfileImage,
+  liked = false,
+  likeCount = 0,
 }: MakerInfoProps) {
   const { mutate: toggleLike } = useAuthorLikeMutation();
 
@@ -37,8 +41,8 @@ export function MakerInfo({
 
       <LikeButton
         variant="maker"
-        liked={true}
-        count={9999}
+        liked={liked}
+        count={likeCount}
         onClick={() => toggleLike({ authorId: 1, userId: 1 })}
       />
     </div>
