@@ -21,8 +21,6 @@ const Footer = () => {
       { productId: 1, userId: 1 },
       {
         onSuccess: (data) => {
-          console.log("좋아요 성공:", data);
-          console.log("좋아요 수: ", data.likeCount);
           setIsProductLiked((prev) => !prev);
           setLikeCount(data.likeCount);
         },
