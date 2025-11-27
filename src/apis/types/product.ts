@@ -12,13 +12,15 @@ export interface ReviewResponse {
   reviewId: number;
   score: number;
   content: string;
-  createdAt: string; 
+  createdAt: string;
   reviewer: Reviewer;
 }
 
 // 리뷰 리스트 응답
 export interface ReviewListResponse {
   reviewResponses: ReviewResponse[];
+}
+
 // 작품 좋아요 요청
 export interface ProductLikeRequest {
   productId: number;
