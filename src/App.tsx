@@ -1,7 +1,12 @@
-import { RelatedProduct } from "@pages/related-product/related-product";
+import { ProductInfo } from "./pages/product-info/product-info";
+import * as styles from "./test.css";
 
 function App() {
-  return <RelatedProduct />;
+  return (
+    <div className={styles.test}>
+      <ProductInfo />
+    </div>
+  );
 }
 
 export default App;
