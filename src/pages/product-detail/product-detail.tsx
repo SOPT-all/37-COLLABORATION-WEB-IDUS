@@ -4,7 +4,7 @@ import { PurchaseSafetyNotice } from "./components/purchase-safety-notice/purcha
 import { ProductInfoNotice } from "./components/product-info-notice/product-info-notice";
 import { DetailSection } from "./components/detail-section/detail-section";
 
-export const ProductDetail = () => {
+const ProductDetail = () => {
   return (
     <div className={styles.container}>
       <PurchaseSafetyNotice />
@@ -13,3 +13,5 @@ export const ProductDetail = () => {
     </div>
   );
 };
+
+export default ProductDetail;

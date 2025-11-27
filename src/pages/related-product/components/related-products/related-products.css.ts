@@ -10,6 +10,7 @@ export const section = style({
       display: "flex",
       flexDirection: "column",
       padding: "0rem 1.6rem",
+      marginBottom: "24.8rem",
     },
   },
 });

@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import * as styles from "./product-info.css";
 import { MakerInfo } from "@/shared/components/maker-info/maker-info";
 import { Carousel } from "./components/carousel/carousel";
 import { ProductMainInfo } from "./components/product-main-info/product-main-info";
@@ -35,7 +36,7 @@ export const ProductInfo = () => {
   };
 
   return (
-    <>
+    <div className={styles.container}>
       {/** 캐러셀 */}
       <Carousel />
       {/** 작품 메인 정보 */}
@@ -53,6 +54,6 @@ export const ProductInfo = () => {
         }>
         <AuthorInfoContent />
       </Suspense>
-    </>
+    </div>
   );
 };

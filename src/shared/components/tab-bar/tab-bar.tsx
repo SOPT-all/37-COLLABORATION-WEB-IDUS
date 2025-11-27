@@ -1,15 +1,15 @@
 import * as styles from "./tab-bar.css";
 
 interface TabBarProps {
-  activeTab: "product-info" | "review" | "recommend";
-  onTabClick: (_tab: "product-info" | "review" | "recommend") => void;
+  activeTab: "product-info" | "review" | "related";
+  onTabClick: (_tab: "product-info" | "review" | "related") => void;
 }
 
 export const TabBar = ({ activeTab, onTabClick }: TabBarProps) => {
   const tabs = [
     { id: "product-info" as const, label: "작품 정보" },
     { id: "review" as const, label: "후기 634" },
-    { id: "recommend" as const, label: "추천" },
+    { id: "related" as const, label: "추천" },
   ];
 
   return (

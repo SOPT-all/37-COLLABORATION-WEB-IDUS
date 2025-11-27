@@ -3,12 +3,12 @@ import { useEffect, useRef, useState, type RefObject } from "react";
 const HEADER_HEIGHT = 56;
 const TAB_BAR_HEIGHT = 46;
 
-export type TabType = "product-info" | "review" | "recommend";
+export type TabType = "product-info" | "review" | "related";
 
 export function useScrollableTabs() {
   const productInfoRef = useRef<HTMLDivElement>(null);
   const reviewRef = useRef<HTMLDivElement>(null);
-  const recommendRef = useRef<HTMLDivElement>(null);
+  const relatedRef = useRef<HTMLDivElement>(null);
 
   const [activeTab, setActiveTab] = useState<TabType>("product-info");
 
@@ -41,7 +41,7 @@ export function useScrollableTabs() {
     // 각 섹션 관찰 시작
     if (productInfoRef.current) sectionObserver.observe(productInfoRef.current);
     if (reviewRef.current) sectionObserver.observe(reviewRef.current);
-    if (recommendRef.current) sectionObserver.observe(recommendRef.current);
+    if (relatedRef.current) sectionObserver.observe(relatedRef.current);
 
     return () => {
       sectionObserver.disconnect();
@@ -49,11 +49,11 @@ export function useScrollableTabs() {
   }, []);
 
   // 탭 클릭 시 해당 섹션으로 스크롤
-  const handleTabClick = (tab: "product-info" | "review" | "recommend") => {
+  const handleTabClick = (tab: "product-info" | "review" | "related") => {
     const sectionRefMap: Record<TabType, RefObject<HTMLDivElement | null>> = {
       "product-info": productInfoRef,
       review: reviewRef,
-      recommend: recommendRef,
+      related: relatedRef,
     };
 
     const targetRef = sectionRefMap[tab];
@@ -75,7 +75,7 @@ export function useScrollableTabs() {
   return {
     productInfoRef,
     reviewRef,
-    recommendRef,
+    relatedRef,
     activeTab,
     handleTabClick,
   };
