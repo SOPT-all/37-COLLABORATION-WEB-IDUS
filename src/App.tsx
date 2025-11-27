@@ -1,7 +1,7 @@
-﻿import { ProductInfo } from "./pages/product-info/product-info";
+﻿import Footer from "@/shared/components/footer/footer";
 
 function App() {
-  return <ProductInfo />;
+  return <Footer />;
 }
 
 export default App;
