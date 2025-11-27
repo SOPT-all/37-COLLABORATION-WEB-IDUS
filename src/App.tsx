@@ -1,7 +1,7 @@
-﻿import RelatedProduct from "./pages/related-product/related-product";
+﻿import { ProductReview } from "./pages/product-review/product-review";
 
 function App() {
-  return <RelatedProduct />;
+  return <ProductReview />;
 }
 
 export default App;

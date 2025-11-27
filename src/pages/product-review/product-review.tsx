@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import * as styles from "./product-review.css";
 
 import { ReviewSummary } from "./components/review-summary/review-summary";
@@ -20,7 +21,14 @@ export const ProductReview = () => {
       />
 
       <section>
-        <ReviewList />
+        <Suspense
+          fallback={
+            <div className={styles.container} aria-label="리뷰 불러오는 중">
+              리뷰를 불러오는 중입니다.
+            </div>
+          }>
+          <ReviewList />
+        </Suspense>
       </section>
     </div>
   );

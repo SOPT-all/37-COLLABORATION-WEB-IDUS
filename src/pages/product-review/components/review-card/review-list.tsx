@@ -1,29 +1,30 @@
 import { useState } from "react";
 import LargeButton from "@/shared/components/button/large-button/large-button";
 import { LARGE_BUTTON_VARIANTS } from "@/shared/constants/button";
-import { mockReviews } from "../../constants/review-list.mock";
+import { useProductReviewQuery } from "@/apis/queries/use-product-review.query";
 import { ReviewCard } from "./review-card";
 import * as styles from "./review-list.css";
 
+const PAGE_SIZE = 5;
+
 export const ReviewList = () => {
-  const [reviews, setReviews] = useState(mockReviews);
+  const productId = 1;
+  const { data } = useProductReviewQuery(productId);
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+
+  const reviews = data?.reviewResponses ?? [];
+  const visibleReviews = reviews.slice(0, visibleCount);
 
   const handleLoadMore = () => {
-    setReviews((prev) => [
-      ...prev,
-      ...mockReviews.map((review, index) => ({
-        ...review,
-        reviewId: prev.length + index + 1,
-      })),
-    ]);
+    setVisibleCount((prev) => prev + PAGE_SIZE);
   };
 
   return (
     <section className={styles.reviewListSection}>
-      {reviews.map((review) => (
+      {visibleReviews.map((review) => (
         <ReviewCard
           key={review.reviewId}
-          nickname={review.nickname}
+          nickname={review.reviewer?.nickname ?? "익명"}
           createdAt={review.createdAt}
           score={review.score}
           content={review.content}
