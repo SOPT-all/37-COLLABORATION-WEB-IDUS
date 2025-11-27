@@ -97,6 +97,7 @@ const Purchase = () => {
             key={option.id}
             title={option.title}
             styleType="bottom-sheets"
+            isExpandable={option.id === 4}
             renderBottomSheetOption={() => (
               <div>
                 <span className={styles.optionType}>선택 |</span>
