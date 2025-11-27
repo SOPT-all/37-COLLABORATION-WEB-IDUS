@@ -32,13 +32,6 @@ export const scrollContainer = style({
       overflowY: "hidden",
       marginRight: "-1.6rem",
       paddingRight: "1.6rem",
-      scrollbarWidth: "none",
-      msOverflowStyle: "none",
-    },
-  },
-  selectors: {
-    "&::-webkit-scrollbar": {
-      display: "none",
     },
   },
 });

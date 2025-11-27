@@ -1,4 +1,4 @@
-﻿import { globalStyle } from "@vanilla-extract/css";
+import { globalStyle } from "@vanilla-extract/css";
 import "./layer.css";
 import "./reset.css";
 import "../styles/typography.css";
@@ -24,7 +24,7 @@ globalStyle("*", {
 });
 
 // 전역 스크롤바 숨김
-globalStyle("html, body", {
+globalStyle("*", {
   scrollbarWidth: "none",
   msOverflowStyle: "none",
 });
