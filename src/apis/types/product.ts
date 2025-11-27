@@ -12,7 +12,7 @@ export interface ReviewResponse {
   reviewId: number;
   score: number;
   content: string;
-  createdAt: string; //
+  createdAt: string; 
   reviewer: Reviewer;
 }
 
