@@ -2,6 +2,7 @@
 
 // 작가 좋아요 요청
 export interface AuthorLikeRequest {
+  authorId: number;
   userId: number;
 }
 
