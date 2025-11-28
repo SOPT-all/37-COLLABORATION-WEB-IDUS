@@ -1,8 +1,12 @@
 # DIVE SOPT 37기 합동 세미나 모바일 웹 3조 아이디어스
 
+<br/>
+
 ## 프로젝트 소개
 
 아이디어스(IDUS) 쇼핑몰 클론 프로젝트입니다.
+
+<br/>
 
 ### 팀원
 
@@ -10,7 +14,11 @@
 | :-------------------------------------------------------: | :------------------------------------------------------: | :------------------------------------------------------: | :---------------------------------------------------------: |
 |           [임지성](https://github.com/jstar000)           |           [지민재](https://github.com/mimizae)           |           [오수빈](https://github.com/odukong)           |           [배정민](https://github.com/qowjdals23)           |
 
+<br/>
+
 ---
+
+<br/>
 
 ## 담당 역할
 
@@ -46,13 +54,21 @@
 | view    | `좋아요 공통 컴포넌트` `컴포넌트들 취합한 루트 페이지 구현` `작가 정보 컴포넌트` `Tab-Bar 구현` `아코디언 공통 컴포넌트` `작품 정보 페이지 (ProductDetail)` |
 | api     | `작가 좋아요 POST`                                                                                                                                          |
 
+<br/>
+
 ---
+
+<br/>
 
 ## 컨벤션
 
 프로젝트 컨벤션은 [여기](https://www.notion.so/2a9b555a2dff8068b9e0e3a6dec05b8c)에서 확인할 수 있습니다.
 
+<br/>
+
 ---
+
+<br/>
 
 ## 사용 기술 스택
 
@@ -66,7 +82,11 @@
 | Formatting & Linting | ![ESLint](https://img.shields.io/badge/ESLint-4B32C3?style=for-the-badge&logo=eslint&logoColor=white) ![Prettier](https://img.shields.io/badge/Prettier-F7B93E?style=for-the-badge&logo=prettier&logoColor=black) |
 | Version Control      | ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white) ![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)                |
 
+<br/>
+
 ---
+
+<br/>
 
 ## 폴더 구조
 
