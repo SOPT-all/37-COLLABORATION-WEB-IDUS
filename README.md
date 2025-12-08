@@ -4,8 +4,6 @@
 
 ## 🛒 프로젝트 소개
 
-아이디어스(IDUS)
-
 ![intro-01](docs/intro-01.png)
 ![intro-02](docs/intro-02.png)
 ![intro-03](docs/intro-03.png)
